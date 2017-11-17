@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link href="{{ asset('bundles/front/css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/front/css/gsb.css') }}" rel="stylesheet">
+    {% endblock %}
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <img src="{{ asset('bundles/front/img/gsb-logo.png') }}" class="logo"><a class="navbar-brand" href="#"></a></img>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Connexion
+                        <span class="sr-only"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% block body %}
+{% endblock %}
+
+{% block footer %}
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="copyright">
+                        <p>©GSB 2017</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="design">
+                        <a href="#">Plan du Site</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<script type="text/javascript" src="{{ asset ('bundles/front/js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset ('bundles/front/js/popper.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset ('bundles/front/js/bootstrap.min.js') }}"></script>
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>

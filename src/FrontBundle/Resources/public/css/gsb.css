@@ -1,0 +1,49 @@
+.h1-index { 
+    color: #153F69; 
+    font-size: 60px; 
+    padding-top: 25px; 
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #111;
+}
+
+.footer a {
+    color: #68A4D1;
+}
+
+.footer p {
+    color: #68A4D1;
+    font-size: 13px;
+}
+
+.design {
+    text-align: right;
+}
+
+.logo {
+    width: 9%;
+}
+
+.id-padding {
+    padding-top: 10%;
+}
+
+.account {
+    text-align: center; 
+    width: 40%; 
+    opacity: 0.8;
+}
+
+.password {
+    padding-top: 5%;
+}
+
+.button {
+    margin-top: 5%;
+}
