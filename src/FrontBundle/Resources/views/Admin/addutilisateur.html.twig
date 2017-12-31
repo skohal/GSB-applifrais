@@ -1,0 +1,49 @@
+{% extends '@Front/Default/base.html.twig' %}
+
+{% block title %} Ajoute utilisateur {% endblock title %}
+
+{% block body %}
+
+    <div class="row centered">
+        <div class="container col-3 formcontainer">
+        </div>
+    </div>
+
+
+        <div class="container col-6 formcontainer">
+            {% for message in app.flashes('success') %}
+                <div class="flash-notice">
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <h4>Ajoutez un utilisateur</h4>
+            <br />
+            <br />
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+
+
+        </div>
+
+
+
+{% block javascripts %}
+
+    <script>
+        $(document).ready(function() {
+            // configure the bootstrap datepicker
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });
+
+    </script>
+{% endblock javascripts %}
+
+{% endblock body %}
+

@@ -2,6 +2,7 @@
 
 namespace FrontBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="FrontBundle\Repository\userRepository")
  */
-class user
+class user extends BaseUser
 {
     /**
      * @var int
@@ -19,63 +20,71 @@ class user
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
      */
-    private $nom;
+    protected $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
      */
-    private $prenom;
+    protected $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse", type="string", length=255)
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
      */
-    private $adresse;
+    protected $adresse;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cp", type="string", length=255)
+     * @ORM\Column(name="cp", type="string", length=255, nullable=true)
      */
-    private $cp;
+    protected $cp;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ville", type="string", length=255)
+     * @ORM\Column(name="ville", type="string", length=255, nullable=true)
      */
-    private $ville;
+    protected $ville;
+
+
+
+
+    /**
+     * @var \Date
+     *
+     * @ORM\Column(name="dateEmbauche", type="date", nullable=true)
+     */
+    protected $dateEmbauche;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateEmbauche", type="datetime")
+     * @ORM\Column(name="dateModif", type="datetime", nullable=true)
      */
-    private $dateEmbauche;
+    protected $dateModif;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateModif", type="datetime")
+     * @ORM\Column(name="dateCreation", type="datetime", nullable=true)
      */
-    private $dateModif;
+    protected $dateCreation;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateCreation", type="datetime")
+     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FicheFrais", mappedBy="user")
      */
-    private $dateCreation;
+    private $fiche;
 
 
     /**
@@ -279,5 +288,48 @@ class user
     {
         return $this->dateCreation;
     }
-}
 
+    /**
+     * Add fiche
+     *
+     * @param \FrontBundle\Entity\FicheFrais $fiche
+     *
+     * @return user
+     */
+    public function addFiche(\FrontBundle\Entity\FicheFrais $fiche)
+    {
+        $this->fiche[] = $fiche;
+
+        return $this;
+    }
+
+    /**
+     * Remove fiche
+     *
+     * @param \FrontBundle\Entity\FicheFrais $fiche
+     */
+    public function removeFiche(\FrontBundle\Entity\FicheFrais $fiche)
+    {
+        $this->fiche->removeElement($fiche);
+    }
+
+    /**
+     * Get fiche
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFiche()
+    {
+        return $this->fiche;
+    }
+
+
+
+    public function __construct()
+    {
+        $this->fichesFrais = new \Doctrine\Common\Collections\ArrayCollection();
+        parent::__construct();
+        // your own logic
+    }
+
+}

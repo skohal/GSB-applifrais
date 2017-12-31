@@ -1,3 +1,60 @@
 front_homepage:
     path:     /
     defaults: { _controller: FrontBundle:Default:homepage }
+
+
+homeutilisateur:
+    path:     /homeuser
+    defaults: {_controller: FrontBundle:Utilisateur:homeutilisateur}
+
+
+
+addfrais:
+    path:     /addfrais
+    defaults: {_controller: FrontBundle:Frais:addFrais}
+
+
+listefrais:
+    path:     /listefrais
+    defaults: {_controller: FrontBundle:Utilisateur:listefrais}
+
+modifierfrais:
+    path:     /modifierfrais
+    defaults: {_controller: FrontBundle:Utilisateur:modifierfrais}
+
+
+
+
+homeadmin:
+    path:     /homeadmin
+    defaults: {_controller: FrontBundle:Utilisateur:homeadmin}
+
+
+
+addfraistype:
+    path:   /addfraistype
+    defaults: {_controller: FrontBundle:FraisForfaitType:addFraisForfaitType}
+
+addutilisateur:
+    path:   /addutilisateur
+    defaults: {_controller: FrontBundle:Utilisateur:addutilisateur}
+
+gererfichesfrais:
+    path:   /gererfichesfrais
+    defaults: {_controller: FrontBundle:Utilisateur:gererfichesfrais}
+
+listeutilisateur:
+    path:   /listeutilisateur
+    defaults: {_controller: FrontBundle:user:index}
+
+voirfichefrais:
+    path:   /voirfichefrais
+    defaults: {_controller: FrontBundle:Utilisateur:voirfichefrais}
+
+user_index:
+    path:   /
+    defaults: {_controller: FrontBundle:user:index}
+
+user_show:
+    path:   /show
+    defaults: {_controller: FrontBundle:user:index}

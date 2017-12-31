@@ -1,0 +1,43 @@
+{% extends '@Front/Default/base.html.twig' %}
+
+{% block body %}
+    <div class="row ">
+        <div class=" col-12 text-center">
+            <h4>Entrez vos frais</h4>
+        </div>
+
+    </div>
+
+    <div class="row">
+            <div class="col-6 text-center">
+
+                <h4>Frais Forfait</h4>
+
+
+                <br />
+                <br />
+
+                {{ form_start(formforfait) }}
+                {{ form_widget(formforfait) }}
+                {{ form_end(formforfait) }}
+
+            </div>
+
+
+            <div class="col-md-6 text-center">
+                <h4>Frais Hors Forfait</h4>
+
+
+                <br />
+                <br />
+
+                {{ form_start(formHorsforfait) }}
+                {{ form_widget(formHorsforfait) }}
+                {{ form_end(formHorsforfait) }}
+
+
+            </div>
+
+    </div>
+
+{%  endblock body %}

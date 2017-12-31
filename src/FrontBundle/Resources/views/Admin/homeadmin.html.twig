@@ -1,0 +1,57 @@
+{% extends '@Front/Default/base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="mt-5" style="color: #153F69; font-size: 60px; padding-top: 25px;">Galaxy Swiss Bourdin</h1>
+
+
+
+
+
+
+
+
+                <div class="container-box">
+                    <div class="box first">
+                        <a href="{{ path('gererfichesfrais') }}">
+                        <span class="icon-cont"><i class="fa fa-rocket"></i></span>
+
+                        <h3>Gestion des Fiches de Frais</h3>
+                        </a>
+                    </div>
+
+                    <div class="box second">
+                        <a href="{{ path('addutilisateur') }}">
+                        <span class="icon-cont"><i class="fa fa-edit"></i></span>
+
+                        <h3>Ajouter un Utilisateur</h3>
+                        </a>
+                    </div>
+
+                    <div class="box third">
+                        <a href="{{ path('listeutilisateur') }}">
+                        <span class="icon-cont"><i class="fa fa-desktop"></i></span>
+
+                        <h3>Consulter les Utilisateurs</h3>
+                        </a>
+                    </div>
+
+                    <div class="box fourth">
+                        <a href="{{ path('addfraistype') }}">
+                        <span class="icon-cont"><i class="fa fa-coffee"></i></span>
+
+                        <h3>Modifier/Consulter les Frais Forfaits Types</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock body %}

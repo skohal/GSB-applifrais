@@ -1,0 +1,33 @@
+{% extends '@Front/Default/base.html.twig' %}
+
+{% block body %}
+
+<div class="row centered">
+    <div class="container col-3 formcontainer">
+    </div>
+</div>
+
+
+<div class="container col-6 formcontainer">
+
+
+        {% for message in app.flashes('success') %}
+            <div class="flash-notice">
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+
+    <h4>Ajoutez un Frais Forfait</h4>
+    <br />
+    <br />
+
+    {{ form_start(formfft) }}
+    {{ form_widget(formfft) }}
+    {{ form_end(formfft) }}
+
+
+</div>
+
+{% endblock body %}
