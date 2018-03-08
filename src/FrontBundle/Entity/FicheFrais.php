@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="fiche_frais")
  * @ORM\Entity(repositoryClass="FrontBundle\Repository\FicheFraisRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class FicheFrais
 {
@@ -38,28 +39,28 @@ class FicheFrais
     /**
      * @var int
      *
-     * @ORM\Column(name="nbJustificatifs", type="integer")
+     * @ORM\Column(name="nbJustificatifs", type="integer", nullable=true)
      */
     private $nbJustificatifs;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="montantValide", type="float")
+     * @ORM\Column(name="montantValide", type="float", nullable=true)
      */
     private $montantValide;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCreation", type="datetime")
+     * @ORM\Column(name="dateCreation", type="date", nullable=true)
      */
     private $dateCreation;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateModif", type="datetime")
+     * @ORM\Column(name="dateModif", type="date", nullable=true)
      */
     private $dateModif;
 
@@ -71,21 +72,19 @@ class FicheFrais
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FraisForfait", mappedBy="Fiche")
+     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FraisForfait", mappedBy="Fiche", cascade={"persist"})
      */
     private $fraisForfaits;
 
     /**
-     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FraisHorsForfait", mappedBy="Fiche")
+     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FraisHorsForfait", mappedBy="Fiche", cascade={"persist"})
      */
     private $fraisHorsForfait;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\Etat", inversedBy="fichesFrais",  cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\Etat", inversedBy="fichesFrais", cascade={"persist"})
      */
     private $etat;
-
-
 
     /**
      * Get id
@@ -200,11 +199,28 @@ class FicheFrais
      *
      * @return FicheFrais
      */
-    public function setDateCreation($dateCreation)
+    public function setDateCreation()
     {
-        $this->dateCreation = $dateCreation;
+        $this->dateCreation = new \DateTime();
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function updateDateCreation()
+    {
+        $this->dateCreation = new \DateTime();
+        $this->dateModif = new \DateTime();
+    }
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function updateDateModif()
+    {
+        $this->dateModif = new \DateTime();
+
     }
 
     /**
@@ -270,7 +286,7 @@ class FicheFrais
     public function __construct()
     {
         $this->fraisForfaits = new \Doctrine\Common\Collections\ArrayCollection();
-
+        $this->fraisHorsForfaits = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -306,7 +322,6 @@ class FicheFrais
     {
         return $this->fraisForfaits;
     }
-
 
     /**
      * Set etat
@@ -364,5 +379,29 @@ class FicheFrais
     public function getFraisHorsForfait()
     {
         return $this->fraisHorsForfait;
+    }
+
+    /**
+     * Set idVisiteur
+     *
+     * @param string $idVisiteur
+     *
+     * @return FicheFrais
+     */
+    public function setIdUser($idUser)
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * Get idVisiteur
+     *
+     * @return string
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
     }
 }

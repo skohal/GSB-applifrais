@@ -1,6 +1,6 @@
 {% extends '@Front/Default/base.html.twig' %}
 
-{% block title %} Ajoute utilisateur {% endblock title %}
+{% block title %} GSB - Ajoute d'utilisateur {% endblock title %}
 
 {% block body %}
 
@@ -9,41 +9,44 @@
         </div>
     </div>
 
+    <div class="container col-md-6 formcontainer">
+        <div class="addutilisateur">
 
-        <div class="container col-6 formcontainer">
-            {% for message in app.flashes('success') %}
-                <div class="flash-notice">
-                    <div class="alert alert-success">
-                        {{ message }}
+                {% for message in app.flashes('success') %}
+                    <div class="flash-notice">
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
 
-            <h4>Ajoutez un utilisateur</h4>
-            <br />
-            <br />
+                <h4>Ajoutez un utilisateur</h4>
+                <br />
+                <br />
 
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
 
 
+            </div>
         </div>
+    </div>
 
 
 
-{% block javascripts %}
+    {% block javascripts %}
 
-    <script>
-        $(document).ready(function() {
-            // configure the bootstrap datepicker
-            $('.js-datepicker').datepicker({
-                format: 'yyyy-mm-dd'
+        <script>
+            $(document).ready(function() {
+                // configure the bootstrap datepicker
+                $('.js-datepicker').datepicker({
+                    format: 'yyyy-mm-dd'
+                });
             });
-        });
 
-    </script>
-{% endblock javascripts %}
+        </script>
+    {% endblock javascripts %}
 
 {% endblock body %}
 

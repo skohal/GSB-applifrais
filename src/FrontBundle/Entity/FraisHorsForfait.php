@@ -45,7 +45,7 @@ class FraisHorsForfait
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="date", nullable=true)
      */
     private $date;
 
@@ -63,11 +63,10 @@ class FraisHorsForfait
 
 
 
-
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -139,7 +138,7 @@ class FraisHorsForfait
     /**
      * Get quantite
      *
-     * @return int
+     * @return integer
      */
     public function getQuantite()
     {

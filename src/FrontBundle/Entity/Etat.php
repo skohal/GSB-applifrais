@@ -58,19 +58,6 @@ class Etat
     }
 
     /**
-     * Set id
-     *
-     * @return Etat
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-
-    }
-
-
-    /**
      * Set libelle
      *
      * @param string $libelle

@@ -82,7 +82,7 @@ class user extends BaseUser
     protected $dateCreation;
 
     /**
-     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FicheFrais", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FicheFrais", mappedBy="user",cascade={"persist"})
      */
     private $fiche;
 
@@ -329,6 +329,7 @@ class user extends BaseUser
     {
         $this->fichesFrais = new \Doctrine\Common\Collections\ArrayCollection();
         parent::__construct();
+
         // your own logic
     }
 

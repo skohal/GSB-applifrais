@@ -32,12 +32,12 @@ class FraisForfait
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="date", nullable=true)
      */
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FraisForfaitType", inversedBy="fraisForfaits")
+     * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FraisForfaitType", inversedBy="fraisForfaits", cascade={"persist", "merge"})
      */
     private $fraisType;
 
@@ -53,10 +53,11 @@ class FraisForfait
     private $etat;
 
 
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -80,7 +81,7 @@ class FraisForfait
     /**
      * Get quantite
      *
-     * @return int
+     * @return integer
      */
     public function getQuantite()
     {
@@ -138,11 +139,11 @@ class FraisForfait
     /**
      * Set fiche
      *
-     * @param \FrontBundle\Entity\FraisForfaitType $fiche
+     * @param \FrontBundle\Entity\FicheFrais $fiche
      *
      * @return FraisForfait
      */
-    public function setFiche(\FrontBundle\Entity\FraisForfaitType $fiche)
+    public function setFiche(\FrontBundle\Entity\FicheFrais $fiche)
     {
         $this->Fiche = $fiche;
 
@@ -152,7 +153,7 @@ class FraisForfait
     /**
      * Get fiche
      *
-     * @return \FrontBundle\Entity\FraisForfaitType
+     * @return \FrontBundle\Entity\FicheFrais
      */
     public function getFiche()
     {

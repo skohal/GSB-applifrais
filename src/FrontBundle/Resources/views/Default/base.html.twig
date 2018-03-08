@@ -18,16 +18,30 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <img src="{{ asset('bundles/front/img/gsb-logo.png') }}" class="logo"><a class="navbar-brand" href="#"></a></img>
+        <img src="{{ asset('bundles/front/img/gsb-logo.png') }}" class="logo">
+    <a class="navbar-brand" href="{{ path('homepage') }}"></a>
+    </img>
+
+        <!--
+        <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('bundles/front/img/gsb-logo.png') }}" class="logo"></img>
+        <img src="{{ asset('bundles/front/img/gsb-logo.png') }}" class="logo"><a class="navbar-brand" href="{{ path('homepage') }}"></a></img>
+        -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Connexion
-                        <span class="sr-only"></span>
-                    </a>
+
+                    <div class="loginname">
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        {% endif %}
+                    </div>
+
                 </li>
             </ul>
         </div>
@@ -38,7 +52,6 @@
 </div>
 
 {% block body %}
-
 {% endblock body %}
 
 {% block footer %}

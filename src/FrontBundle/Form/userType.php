@@ -38,6 +38,8 @@ class userType extends AbstractType
             ->add('ville')
             ->add('dateEmbauche', DateType::class, array('placeholder' => 'cliquez pour selectionné la date','widget' => 'single_text','attr' => ['class' => 'datepicker']))
 
+
+
             ->add('roles', ChoiceType::class, array(
                 'choices' => array(
                     'Admin' => 'ROLE_ADMIN',

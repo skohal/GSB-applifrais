@@ -32,17 +32,17 @@ class FraisForfait
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="date", nullable=true)
      */
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FraisForfaitType", inversedBy="fraisForfaits")
+     * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FraisForfaitType", inversedBy="fraisForfaits", cascade={"persist", "merge"})
      */
     private $fraisType;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FraisForfaitType", inversedBy="fraisForfaits", cascade={"persist", "merge"})
+     * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FicheFrais", inversedBy="fraisForfaits", cascade={"persist", "merge"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $Fiche;
@@ -53,10 +53,11 @@ class FraisForfait
     private $etat;
 
 
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -80,7 +81,7 @@ class FraisForfait
     /**
      * Get quantite
      *
-     * @return int
+     * @return integer
      */
     public function getQuantite()
     {
@@ -110,5 +111,76 @@ class FraisForfait
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set fraisType
+     *
+     * @param \FrontBundle\Entity\FraisForfaitType $fraisType
+     *
+     * @return FraisForfait
+     */
+    public function setFraisType(\FrontBundle\Entity\FraisForfaitType $fraisType = null)
+    {
+        $this->fraisType = $fraisType;
+
+        return $this;
+    }
+
+    /**
+     * Get fraisType
+     *
+     * @return \FrontBundle\Entity\FraisForfaitType
+     */
+    public function getFraisType()
+    {
+        return $this->fraisType;
+    }
+
+    /**
+     * Set fiche
+     *
+     * @param \FrontBundle\Entity\FicheFrais $fiche
+     *
+     * @return FraisForfait
+     */
+    public function setFiche(\FrontBundle\Entity\FicheFrais $fiche)
+    {
+        $this->Fiche = $fiche;
+
+        return $this;
+    }
+
+    /**
+     * Get fiche
+     *
+     * @return \FrontBundle\Entity\FicheFrais
+     */
+    public function getFiche()
+    {
+        return $this->Fiche;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param \FrontBundle\Entity\Etat $etat
+     *
+     * @return FraisForfait
+     */
+    public function setEtat(\FrontBundle\Entity\Etat $etat = null)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return \FrontBundle\Entity\Etat
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+}

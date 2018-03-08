@@ -24,7 +24,7 @@ class LoadUser extends Fixture
                 'adresse' => '3 rue Dupin',
                 'cp' => '69001',
                 'ville' => 'Lyon',
-            )
+            ),
         );
 
         foreach($tab as $row) {
@@ -38,6 +38,7 @@ class LoadUser extends Fixture
             $user->setAdresse($row['adresse']);
             $user->setCp($row['cp']);
             $user->setVille($row['ville']);
+            $user->setDateCreation(new \DateTime());
             $user->setEnabled(true);
             $user->setDateEmbauche($date->setDate(2012, 4, 27));
 

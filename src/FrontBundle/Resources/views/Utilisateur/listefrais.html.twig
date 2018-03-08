@@ -1,1 +1,39 @@
 {% extends '@Front/Default/base.html.twig' %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Utilisteur
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            montant des frais
+        </th>
+    </thead>
+    <tbody>
+    {% for uneFicheFrais in  %}
+    <tr>
+        <td>
+
+        </td>
+        <td>
+            {{ uneFiche.date | date ("d-M-Y") }}
+        </td>
+        <td>
+
+        </td>
+    </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">
+                Aucune fiche entrée
+            </td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
