@@ -27,11 +27,11 @@ class FraisController extends Controller
 
         $moisFicheFrais = $moisEnCours;
         $anneeFicheFrais = $anneeEnCours;
-        if ($jourEnCours>10){
-            $moisFicheFrais=($moisEnCours + 1);
-            if ($moisFicheFrais >12) {
-                $moisFicheFrais=1;
-                $anneeFicheFrais = ($anneeEnCours +1);
+        if ($jourEnCours > 10) {
+            $moisFicheFrais = ($moisEnCours + 1);
+            if ($moisFicheFrais > 12) {
+                $moisFicheFrais = 1;
+                $anneeFicheFrais = ($anneeEnCours + 1);
             }
         }
 
@@ -42,7 +42,7 @@ class FraisController extends Controller
         );
 
 
-        if($ficheFraisEnCours == null){
+        if ($ficheFraisEnCours == null) {
             $etat = $em->getRepository('FrontBundle:Etat')->find(1);
 
             $ficheFraisEnCours = new ficheFrais();
@@ -58,7 +58,7 @@ class FraisController extends Controller
         $etatInitial = $em->getRepository("FrontBundle:Etat")->find(1);
         $fraisforfait->setEtat($etatInitial);
         $fraisforfait->setDate(new \DateTime());
-        $formforfait = $this ->createForm('FrontBundle\Form\FraisForfaitType', $fraisforfait);
+        $formforfait = $this->createForm('FrontBundle\Form\FraisForfaitType', $fraisforfait);
         $formforfait->handleRequest($request);
 
 
@@ -73,7 +73,7 @@ class FraisController extends Controller
         $fraisHorsforfait = new fraisHorsForfait();
         $fraisHorsforfait->setEtat($etatInitial);
         $fraisHorsforfait->setDate(new \DateTime());
-        $formHorsforfait = $this ->createForm('FrontBundle\Form\FraisHorsForfaitType', $fraisHorsforfait);
+        $formHorsforfait = $this->createForm('FrontBundle\Form\FraisHorsForfaitType', $fraisHorsforfait);
         $formHorsforfait->handleRequest($request);
 
         if ($formHorsforfait->isSubmitted() && $formHorsforfait->isValid()) {
@@ -88,10 +88,42 @@ class FraisController extends Controller
             array(
                 'formforfait' => $formforfait->createView(),
                 'formHorsforfait' => $formHorsforfait->createView(),
-                'jour'=>$jourEnCours,
-                'mois'=>$moisEnCours,
-                'annee'=>$anneeEnCours,
+                'jour' => $jourEnCours,
+                'mois' => $moisEnCours,
+                'annee' => $anneeEnCours,
                 'fichefraisencours' => $ficheFraisEnCours,
             ));
     }
+
+    public function supprimerfraisforfaitAction($id)
+    {
+
+        $fraisforfait = $this->getDoctrine()->getRepository('FrontBundle:FraisForfait')->find($id);
+
+        if ($fraisforfait != null) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($fraisforfait);
+            $em->flush();
+            $this->addFlash("success", "Frais supprimer");
+        }
+        return $this->redirectToRoute('addfrais');
+
+
     }
+
+    public function suppfraishorsforfaitAction($id)
+    {
+
+        $fraisHorsforfait = $this->getDoctrine()->getRepository('FrontBundle:FraisHorsForfait')->find($id);
+
+        if ($fraisHorsforfait != null) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($fraisHorsforfait);
+            $em->flush();
+            $this->addFlash("success", "Frais supprimer");
+        }
+        return $this->redirectToRoute('addfrais');
+
+
+    }
+}
