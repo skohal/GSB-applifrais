@@ -6,9 +6,19 @@ login:
     path:     /login
     defaults: {_controller: FOSUserBundle:Security:login}
 
+
+
 addfrais:
     path:     /addfrais
     defaults: {_controller: FrontBundle:Frais:addFrais}
+
+removefraisforfait:
+    path:     /frais/{id}/remove
+    defaults: {_controller: FrontBundle:Frais:supprimerfraisforfait}
+
+removefraishorsforfait:
+    path:     /frais/{id}/remove2
+    defaults: {_controller: FrontBundle:Frais:suppfraishorsforfait}
 
 
 listefrais:
