@@ -117,6 +117,8 @@
                         </td>
                         <td>
                             {{ (unFraisForfait.quantite *  unFraisForfait.fraisType.montant)  | number_format(2, ',', ' ')  }}€
+
+                            <a href="{{ path('removefraisforfait', { id: unFraisForfait.id }) }}"><i class="fas fa-times"></i></a>
                         </td>
                     </tr>
                 {% else %}
@@ -174,6 +176,8 @@
                         </td>
                         <td>
                             {{ (unFraisHorsForfait.quantite *  unFraisHorsForfait.montant)  | number_format(2, ',', ' ')  }}€
+
+                            <a href="{{ path('removefraishorsforfait', { id: unFraisHorsForfait.id }) }}"><i class="fas fa-times"></i></a>
                         </td>
                     </tr>
                 {% else %}
