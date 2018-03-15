@@ -3,7 +3,6 @@
 namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FrontBundle\Entity\FraisForfaitType;
 use Symfony\Component\HttpFoundation\Request;
 

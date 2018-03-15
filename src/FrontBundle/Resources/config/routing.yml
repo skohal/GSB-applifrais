@@ -28,22 +28,23 @@ addutilisateur:
     path:   /admin/addutilisateur
     defaults: {_controller: FrontBundle:Admin:addutilisateur}
 
+listeutilisateur:
+    path:   /admin/listeutilisateur
+    defaults: {_controller: FrontBundle:Admin:listeuser}
+
 gererfichesfrais:
     path:   /admin/gererfichesfrais
-    defaults: {_controller: FrontBundle:Admin:gererfichesfrais}
-
-listeutilisateur:
-    path:   /listeutilisateur
-    defaults: {_controller: FrontBundle:user:index}
+    defaults: {_controller: FrontBundle:FicheFrais:gererFiches}
 
 voirfichefrais:
-    path:   /voirfichefrais
+    path:   /admin/voirfichefrais
     defaults: {_controller: FrontBundle:Admin:voirfichefrais}
 
-user_index:
-    path:   /
-    defaults: {_controller: FrontBundle:user:index}
 
-user_show:
-    path:   /show
-    defaults: {_controller: FrontBundle:user:index}
+user_edit:
+    path:   /user/{id}/edit
+    defaults: {_controller: FrontBundle:Admin:modifieruser }
+
+user_remove:
+    path:   /user/{id}/remove
+    defaults: {_controller: FrontBundle:Admin:supprimeruser }

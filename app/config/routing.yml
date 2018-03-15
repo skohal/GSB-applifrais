@@ -1,3 +1,7 @@
+front_fiche_frais:
+    resource: "@FrontBundle/Controller/FicheFraisController.php"
+    type:     annotation
+
 
 front:
     resource: "@FrontBundle/Resources/config/routing.yml"

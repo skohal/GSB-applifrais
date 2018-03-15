@@ -12,13 +12,10 @@ class UtilisateurController extends Controller
     public function listefraisAction()
     {
         return $this->render('FrontBundle:Utilisateur:listefrais.html.twig');
-
+        
     }
 
 
-    public function modifierfraisAction()
-    {
-        return $this->render('FrontBundle:Utilisateur:modifierfrais.html.twig');
 
-    }
+
 }

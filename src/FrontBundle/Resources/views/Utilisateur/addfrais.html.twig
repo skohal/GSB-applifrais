@@ -1,5 +1,14 @@
 {% extends '@Front/Default/base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('bundles/front/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/front/css/jquery-ui.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/front/css/jquery-ui.structure.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/front/css/jquery-ui.theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/front/css/gsb.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/front/css/gsb2.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block body %}
     <div class="row ">
         <div class=" col-12 text-center nompage">

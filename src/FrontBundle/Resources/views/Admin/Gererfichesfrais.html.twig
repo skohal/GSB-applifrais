@@ -1,1 +1,54 @@
 {% extends '@Front/Default/base.html.twig' %}
+
+{% block body %}
+
+    <div class="row margetop"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <h1>Liste Fichefrais</h1>
+
+            <div class="row">
+                <ul id="nav-fiches">
+                    <ul class="btn-link" id="li-encours">Fiche en Cours</ul>
+                    <ul class="btn-link" id="li-cloturees">Fiche Cloturées</ul>
+                    <ul class="btn-link" id="li-validees">Fiche Valitées</ul>
+                </ul>
+            </div>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="userth">Id</th>
+                    <th class="userth">Mois</th>
+                    <th class="userth">Annee</th>
+                    <th class="userth">Montant valide</th>
+                    <th class="userth">Date creation</th>
+                    <th class="userth">Date modif</th>
+                    <th class="userth">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for ficheFrai in ficheFrais %}
+
+                    <tr>
+                        <td class="usertd"><a href="{{ path('voirfichefrais', { 'id': ficheFrai.id }) }}">{{ ficheFrai.id }}</a></td>
+                        <td class="usertd">{{ ficheFrai.mois }}</td>
+                        <td class="usertd">{{ ficheFrai.annee }}</td>
+                        <td class="usertd">{{ ficheFrai.montantValide }}</td>
+                        <td class="usertd">{% if ficheFrai.dateCreation %}{{ ficheFrai.dateCreation|date('Y-m-d') }}{% endif %}</td>
+                        <td class="usertd">{% if ficheFrai.dateModif %}{{ ficheFrai.dateModif|date('Y-m-d') }}{% endif %}</td>
+                        <td>
+                            <ul>
+                                <a href="{{ path('voirfichefrais', { 'id': ficheFrai.id }) }}"><button type="button" class="btn btn-outline-primary userbt">Voir la Fiche</button></a>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

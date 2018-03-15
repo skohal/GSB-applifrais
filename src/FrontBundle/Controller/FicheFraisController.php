@@ -2,27 +2,27 @@
 
 namespace FrontBundle\Controller;
 
+use FrontBundle\Entity\FicheFrais;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 
 
 class FicheFraisController extends Controller
 {
-    public function removeFicheFraisAction(Request $request, $id)
+
+    public function gererFichesAction()
     {
+        $em = $this->getDoctrine()->getManager();
 
-        $fichefrais = $this->getDoctrine()->getRepository('FrontBundle:FicheFrais')->find($id);
+        $ficheFrais = $em->getRepository('FrontBundle:FicheFrais')->findAll();
 
-        if ($fichefrais != null) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($fichefrais);
-            $em->flush();
-        }
-        return $this->redirectToRoute('gererfichesfrais');
+        return $this->render('@Front/Admin/Gererfichesfrais.html.twig', array(
+            'ficheFrais' => $ficheFrais,
+        ));
     }
 
-    public function voirFicheFraisAction(Request $request, $id)
+
+    public function voirFicheFraisAction(FicheFrais $ficheFrai, $id)
     {
         $fiche = $this->getDoctrine()->getRepository('FrontBundle:FicheFrais')->find($id);
         $em = $this->getDoctrine()->getManager();
@@ -57,43 +57,8 @@ class FicheFraisController extends Controller
             }
         }
 
-        return $this->render('@Front/Admin/Gererfichesfrais.html.twig',
-            array(
-                "fichefrais" => $fiche,
-            ));
-    }
-
-    public function listeFichesAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->getUser();
-
-        $fichesFrais = $user->getFiches();
-        $fraisForfaits = $this->getDoctrine()->getRepository('FrontBundle:FraisForfait')->findAll();
-        $fraisHorsForfaits = $this->getDoctrine()->getRepository('FrontBundle:FraisHorsForfait')->findAll();
-
-
-        return $this->render('@Front/Admin/Gererfichesfrais.html.twig',
-            array('fichesfrais' => $fichesFrais,
-                'fraisforfaits' => $fraisForfaits,
-                'fraishorsforfaits' => $fraisHorsForfaits
-            ));
-    }
-
-    public function gererFichesAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->getUser();
-
-        $fichesFrais = $this->getDoctrine()->getRepository('FrontBundle:FicheFrais')->findAll();
-        $fraisForfaits = $this->getDoctrine()->getRepository('FrontBundle:FraisForfait')->findAll();
-        $fraisHorsForfaits = $this->getDoctrine()->getRepository('FrontBundle:FraisHorsForfait')->findAll();
-
-
-        return $this->render('@Front/Admin/Gererfichesfrais.html.twig',
-            array('fichesfrais' => $fichesFrais,
-                'fraisforfaits' => $fraisForfaits,
-                'fraishorsforfaits' => $fraisHorsForfaits
-            ));
+        return $this->render('FrontBundle:Admin:voirfichefrais.html.twig', array(
+            'ficheFrai' => $ficheFrai,
+        ));
     }
 }

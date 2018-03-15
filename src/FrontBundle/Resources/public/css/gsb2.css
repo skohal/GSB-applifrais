@@ -1,11 +1,7 @@
-.h1-index { 
-    color: #153F69; 
-    font-size: 60px; 
+.h1-index {
+    color: #153F69;
+    font-size: 60px;
     padding-top: 50px;
-}
-
-.body {
-    background: url(".../img/back.jpg");
 }
 
 .footer {
@@ -42,8 +38,8 @@
 }
 
 .account {
-    text-align: center; 
-    width: 40%; 
+    text-align: center;
+    width: 40%;
     opacity: 0.8;
 }
 
@@ -261,8 +257,6 @@ body * {
 
 .form-control {
     width: 70%;
-    margin-top: -38px;
-    margin-left: 200px;
 }
 
 .loginname{
@@ -274,7 +268,7 @@ body * {
     text-decoration: underline;
 }
 
-addutilisateur h4{
+.addutilisateur h4{
     text-align: center;
 }
 
@@ -290,51 +284,4 @@ addutilisateur h4{
 
 .formcontainer{
     padding-bottom: 50px;
-}
-
-.userth{
-    text-align: center;
-}
-
-.usertd{
-    text-align: center;
-}
-
-.userbt {
-    padding: 0px;
-}
-.bntco{
-    margin-top: 50px;
-    padding: 8%;
-}
-
-.box{
-    width: 37%;
-    height: 125%;
-}
-
-.box h3{
-    padding-top: 25px;
-    margin-top: 8px;
-    text-decoration: none;
-}
-
-
-.box:hover{
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-
-.a{
-    text-decoration: none;
-}
-
-.adbox{
-    width: 250px;
-    height: 125px;
-}
-
-.usbox{
-    width: 250px;
-    height: 125px;
 }

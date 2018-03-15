@@ -62,9 +62,7 @@ class DefaultController extends Controller
                 }
             }
         } else {
-            return $this->render('@Front/Utilisateur/homeutilisateur.html.twig',
-                array('user'=> $user
-                ));
+            return $this->render('@Front/Default/Index.html.twig');
         }
     }
 
