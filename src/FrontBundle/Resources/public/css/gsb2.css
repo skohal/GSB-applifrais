@@ -4,6 +4,10 @@
     padding-top: 50px;
 }
 
+.body {
+    background: url(".../img/back.jpg");
+}
+
 .footer {
     bottom: 0;
     width: 100%;
@@ -268,7 +272,7 @@ body * {
     text-decoration: underline;
 }
 
-.addutilisateur h4{
+addutilisateur h4{
     text-align: center;
 }
 
