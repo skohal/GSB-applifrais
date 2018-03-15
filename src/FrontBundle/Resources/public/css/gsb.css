@@ -275,7 +275,7 @@ body * {
     text-decoration: underline;
 }
 
-addutilisateur h4{
+.addutilisateur h4{
     text-align: center;
 }
 
@@ -303,9 +303,48 @@ addutilisateur h4{
 
 .userbt{
     padding: 0px;
-
 }
 
 .navbar-brand {
     width: 100px;
+}
+
+.bntco{
+    margin-top: 50px;
+    padding: 8%;
+}
+
+.box{
+    width: 37%;
+    height: 125%;
+}
+
+.box h3{
+    padding-top: 25px;
+    margin-top: 8px;
+    text-decoration: none;
+}
+
+
+.box:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.a{
+    text-decoration: none;
+}
+
+.adbox{
+    width: 250px;
+    height: 125px;
+}
+
+.usbox{
+    width: 250px;
+    height: 125px;
+}
+
+.tabaddfrais{
+    padding-bottom: 100px;
 }
