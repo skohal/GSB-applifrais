@@ -4,9 +4,7 @@
     padding-top: 50px;
 }
 
-.body {
-    background: url(".../img/back.jpg");
-}
+
 
 .footer {
     bottom: 0;
@@ -337,4 +335,8 @@ addutilisateur h4{
 .usbox{
     width: 250px;
     height: 125px;
+}
+
+.tabaddfrais{
+    padding-bottom: 100px;
 }
