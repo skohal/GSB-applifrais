@@ -1,139 +1,133 @@
 {% extends '@Front/Default/base.html.twig' %}
 
 {% block body %}
-    <div class="col-xs-12 col-md-6 offset-md-1  text-center tabaddfrais" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center tabaddfrais">
 
-        <h4> Frais Forfait entrés</h4>
+            <h4> Frais Forfait entrés</h4>
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th>
-                    Date
-                </th>
-                <th>
-                    libelle
-                </th>
-                <th>
-                    Quantite
-                </th>
-                <th>
-                    Montant unitaire
-                </th>
-                <th>
-                    Total
-                </th>
-                <th>
-
-                </th>
-                <th>
-
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for fraisforfaitutilisateur in ficheutilisateur.fraisForfaits %}
-                <td>
-                    {{ fraisforfaitutilisateur.date | date("d-M-Y")}}
-                </td>
-                <td>
-                    {{ fraisforfaitutilisateur.fraisType.libelle }}
-                </td>
-                <td>
-                    {{ fraisforfaitutilisateur.quantite }}
-                </td>
-                <td>
-                    {{ fraisforfaitutilisateur.fraisType.montant | number_format(2, ',', ' ') }}€
-                </td>
-                <td>
-                    {{ (fraisforfaitutilisateur.quantite * fraisforfaitutilisateur.fraisType.montant)  | number_format(2, ',', ' ')  }}€
-                </td>
-                <td>
-                    <a href="{{ path('modifierfraisforfait', { id: fraisforfaitutilisateur.id }) }}"><button class="btn-primary">Modifier frais</button></a>
-                </td>
-                <td>
-                    <a href="{{ path('removefraishorsforfait', { id: fraisforfaitutilisateur.id }) }}"><button class="btn-danger">Supprimer frais</button></a>
-                </td>
-
-            {% else %}
+            <table class="table">
+                <thead>
                 <tr>
-                    <td colspan="4">
-                        Aucun Frais forfait
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        libelle
+                    </th>
+                    <th>
+                        Quantite
+                    </th>
+                    <th>
+                        Montant unitaire
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for fraisforfaitutilisateur in ficheutilisateur.fraisForfaits %}
+                    <td>
+                        {{ fraisforfaitutilisateur.date | date("d-M-Y")}}
+                    </td>
+                    <td>
+                        {{ fraisforfaitutilisateur.fraisType.libelle }}
+                    </td>
+                    <td>
+                        {{ fraisforfaitutilisateur.quantite }}
+                    </td>
+                    <td>
+                        {{ fraisforfaitutilisateur.fraisType.montant | number_format(2, ',', ' ') }}€
+                    </td>
+                    <td>
+                        {{ (fraisforfaitutilisateur.quantite * fraisforfaitutilisateur.fraisType.montant)  | number_format(2, ',', ' ')  }}€
+                    </td>
+                    <td>
+                        <a href="{{ path('modifierfraisforfait', { id: fraisforfaitutilisateur.id }) }}"><button class="btn btn-info userbt">Modifier frais</button></a>
+
+                        <a href="{{ path('removefraishorsforfait', { id: fraisforfaitutilisateur.id }) }}"><button class="btn btn-danger userbt">Supprimer frais</button></a>
                     </td>
 
-                </tr>
-            {% endfor %}
-            </tbody>
+                {% else %}
+                    <tr>
+                        <td colspan="4">
+                            Aucun Frais forfait
+                        </td>
 
-        </table>
+                    </tr>
+                {% endfor %}
+                </tbody>
 
-    </div>
+            </table>
 
-    <div class="col-xs-12 col-md-6 text-center tabaddfrais">
+        </div>
 
-        <h4> Frais Hors Forfait entrés</h4>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center tabaddfrais">
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th>
-                    Date
-                </th>
-                <th>
-                    libelle
-                </th>
-                <th>
-                    Quantite
-                </th>
-                <th>
-                    Montant unitaire
-                </th>
-                <th>
-                    Total
-                </th>
-                <th>
+            <h4> Frais Hors Forfait entrés</h4>
 
-                </th>
-                <th>
-
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for fraishorsforfaitutilisateur in ficheutilisateur.fraisHorsForfait %}
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>
-                        {{ fraishorsforfaitutilisateur.date | date("d-M-Y")}}
-                    </td>
-                    <td>
-                        {{ fraishorsforfaitutilisateur.libelle }}
-                    </td>
-                    <td>
-                        {{ fraishorsforfaitutilisateur.quantite }}
-                    </td>
-                    <td>
-                        {{ fraishorsforfaitutilisateur.montant | number_format(2, ',', ' ') }}€
-                    </td>
-                    <td>
-                        {{ (fraishorsforfaitutilisateur.quantite *  fraishorsforfaitutilisateur.montant)  | number_format(2, ',', ' ')  }}€
-                    </td>
-                    <td>
-                        <a href="{{ path('modifierfraishorsforfait', { id: fraishorsforfaitutilisateur.id }) }}"><button class="btn-primary">Modifier frais</button></a>
-                    </td>
-                    <td>
-                        <a href="{{ path('removefraishorsforfait', { id: fraishorsforfaitutilisateur.id }) }}"><button class="btn-danger">Supprimer frais</button></a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="4">
-                        Aucun Frais forfait
-                    </td>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        libelle
+                    </th>
+                    <th>
+                        Quantite
+                    </th>
+                    <th>
+                        Montant unitaire
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                    <th>
 
+                    </th>
                 </tr>
-            {% endfor %}
-            </tbody>
+                </thead>
+                <tbody>
+                {% for fraishorsforfaitutilisateur in ficheutilisateur.fraisHorsForfait %}
+                    <tr>
+                        <td>
+                            {{ fraishorsforfaitutilisateur.date | date("d-M-Y")}}
+                        </td>
+                        <td>
+                            {{ fraishorsforfaitutilisateur.libelle }}
+                        </td>
+                        <td>
+                            {{ fraishorsforfaitutilisateur.quantite }}
+                        </td>
+                        <td>
+                            {{ fraishorsforfaitutilisateur.montant | number_format(2, ',', ' ') }}€
+                        </td>
+                        <td>
+                            {{ (fraishorsforfaitutilisateur.quantite *  fraishorsforfaitutilisateur.montant)  | number_format(2, ',', ' ')  }}€
+                        </td>
+                        <td>
+                            <a href="{{ path('modifierfraishorsforfait', { id: fraishorsforfaitutilisateur.id }) }}"><button class="btn btn-info userbt">Modifier frais</button></a>
 
-        </table>
+                            <a href="{{ path('removefraishorsforfait', { id: fraishorsforfaitutilisateur.id }) }}"><button class="btn btn-danger userbt">Supprimer frais</button></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">
+                            Aucun Frais forfait
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
     </div>
 {% endblock body %}

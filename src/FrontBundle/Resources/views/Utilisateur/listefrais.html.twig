@@ -4,49 +4,49 @@
 
     <div class="margetop"></div>
 
-<div class="col-xs-12 col-md-12 text-center tabaddfrais">
+    <div class="col-xs-12 col-md-12 text-center tabaddfrais">
 
-    <h4> Liste de vos fiches</h4>
+        <h3> Liste de vos fiches</h3>
 
-    <table class="table">
-        <thead>
-        <tr>
-
-            <th>
-                Mois de la fiche
-            </th>
-            <th>
-                Année de la fiche
-            </th>
-            <th>
-                Action
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for laficheFrais in ficheFrais %}
-
+        <table class="table">
+            <thead>
             <tr>
-                <td class="usertd">{{ laficheFrais.mois | date('F') }}</td>
-                <td class="usertd">{{ laficheFrais.annee }}</td>
-                <td>
-                    <ul>
-                        <a href="{{ path('afficherfichefrais', { 'id': laficheFrais.id }) }}"><button type="button" class="btn btn-outline-primary userbt">Voir la Fiche</button></a>
-                    </ul>
-                </td>
+
+                <th>
+                    Mois de la fiche
+                </th>
+                <th>
+                    Année de la fiche
+                </th>
+                <th>
+                    Action
+                </th>
             </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">
-                    Aucune fiche
-                </td>
+            </thead>
+            <tbody>
+            {% for laficheFrais in ficheFrais %}
 
-            </tr>
-        {% endfor %}
-        </tbody>
+                <tr>
+                    <td class="usertd">{{ laficheFrais.mois | date('F') }}</td>
+                    <td class="usertd">{{ laficheFrais.annee }}</td>
+                    <td>
+                        <ul>
+                            <a href="{{ path('afficherfichefrais', { 'id': laficheFrais.id }) }}"><button type="button" class="btn btn-info userbt">Voir la Fiche</button></a>
+                        </ul>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">
+                        Aucune fiche
+                    </td>
 
-    </table>
+                </tr>
+            {% endfor %}
+            </tbody>
 
-</div>
+        </table>
+
+    </div>
 
 {% endblock body %}

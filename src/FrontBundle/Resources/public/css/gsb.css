@@ -257,7 +257,7 @@ body * {
 }
 
 .row {
-    margin-right: 0px;
+    margin-right: -20px;
 }
 
 .form-control {
@@ -272,7 +272,7 @@ body * {
 
 
 .applifrais{
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .addutilisateur h4{
@@ -302,7 +302,9 @@ body * {
 }
 
 .userbt{
-    padding: 0px;
+    padding: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 .navbar-brand {
@@ -345,14 +347,55 @@ body * {
     height: 125px;
 }
 
-.tabaddfrais{
-    padding-bottom: 100px;
-}
-
 .fa-times{
     color: red;
 }
 
 .table{
     font-size: 14px;
+}
+
+
+.navbar-brand {
+    width: 100px;
+}
+
+.tabaddfrais{
+    padding-bottom: 40px;
+    padding-top: 100px;
+}
+
+.form-group2 {
+    display: inline-block;
+}
+
+.form-group2 label{
+    margin-top: 1.5%;
+}
+
+.form-group2 input{
+    display: inline-block;
+    text-align: center;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+.form-group3 label{
+    margin-top: 1.5%;
+}
+
+.form-group3 input{
+    display: inline-block;
+    text-align: center;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+button, html [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: button;
+    margin-left: 10px;
+}
+
+.table thead th {
+    text-align: center;
 }

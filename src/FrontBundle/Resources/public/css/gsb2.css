@@ -62,7 +62,7 @@
 }
 
 .nompage{
-    padding-top: 50px;
+    padding-top: 70px;
     padding-bottom: 50px;
 }
 
@@ -267,7 +267,6 @@ body * {
     color: #66A3D3;
 }
 
-
 .applifrais{
     text-decoration: underline;
 }
@@ -277,10 +276,11 @@ addutilisateur h4{
 }
 
 .form-group{
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 .control-label{
     text-align: center;
+    margin-bottom: 45px;
 }
 .centered{
     margin-top: 50px;
@@ -288,4 +288,8 @@ addutilisateur h4{
 
 .formcontainer{
     padding-bottom: 50px;
+}
+
+.table th, .table td {
+    padding: 0.15rem;
 }
