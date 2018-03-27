@@ -2,37 +2,51 @@
 
 {% block body %}
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            Utilisteur
-        </th>
-        <th>
-            Date
-        </th>
-        <th>
-            montant des frais
-        </th>
-    </thead>
-    <tbody>
+    <div class="margetop"></div>
 
-    <tr>
-        <td>
+<div class="col-xs-12 col-md-12 text-center tabaddfrais">
 
-        </td>
-        <td>
+    <h4> Liste de vos fiches</h4>
 
-        </td>
-        <td>
+    <table class="table">
+        <thead>
+        <tr>
 
-        </td>
-    </tr>
+            <th>
+                Mois de la fiche
+            </th>
+            <th>
+                Année de la fiche
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for laficheFrais in ficheFrais %}
 
+            <tr>
+                <td class="usertd">{{ laficheFrais.mois | date('F') }}</td>
+                <td class="usertd">{{ laficheFrais.annee }}</td>
+                <td>
+                    <ul>
+                        <a href="{{ path('afficherfichefrais', { 'id': laficheFrais.id }) }}"><button type="button" class="btn btn-outline-primary userbt">Voir la Fiche</button></a>
+                    </ul>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">
+                    Aucune fiche
+                </td>
 
+            </tr>
+        {% endfor %}
+        </tbody>
 
-    </tbody>
+    </table>
 
-</table>
+</div>
 
 {% endblock body %}

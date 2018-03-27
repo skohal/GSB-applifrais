@@ -10,6 +10,7 @@ use FrontBundle\Entity\FicheFrais;
 class DefaultController extends Controller
 {
 
+    /*Action qui permet d'affiche la page d'accueil on fonction du role */
 
     public function homePageAction(Request $request)
     {
@@ -67,6 +68,8 @@ class DefaultController extends Controller
     }
 
 
+    /*Action  */
+
     public function validerFicheAction(Request $request, $id)
     {
         $fichefrais = $this->getDoctrine()->getRepository('FrontBundle:FicheFrais')->find($id);
@@ -77,6 +80,8 @@ class DefaultController extends Controller
 
         return $this->redirectToRoute('');
     }
+
+    /*Action permet l'acces du site map */
 
     public function siteMapAction(){
         $user = $this->getUser();

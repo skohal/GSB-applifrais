@@ -30,4 +30,56 @@
 
 </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center tabaddfrais">
+
+            <h4>Liste Frais Forfait type</h4>
+
+            <table class="table">
+                <thead>
+
+                    <tr>
+                        <th>
+                            Libelle
+                        </th>
+                        <th>
+                            Montant
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                {% for lesfraistypes in fraisType %}
+                <tr>
+                    <td>
+                        {{ lesfraistypes.libelle }}
+                    </td>
+                    <td>
+                        {{ lesfraistypes.montant }}
+                    </td>
+                    <td>
+                        <a href="{{ path('removefraistype', { id: lesfraistypes.id }) }}"><i class="fas fa-times"></i></a>
+                    </td>
+                </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">
+                            Aucun Frais forfait Type
+                        </td>
+
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
 {% endblock body %}

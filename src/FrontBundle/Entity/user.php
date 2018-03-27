@@ -327,8 +327,9 @@ class user extends BaseUser
 
     public function __construct()
     {
-        $this->fichesFrais = new \Doctrine\Common\Collections\ArrayCollection();
         parent::__construct();
+        $this->fichesFrais = new \Doctrine\Common\Collections\ArrayCollection();
+
 
         // your own logic
     }

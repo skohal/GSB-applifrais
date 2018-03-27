@@ -1,0 +1,53 @@
+{% extends '@Front/Default/base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/front/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/front/css/jquery-ui.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/front/css/jquery-ui.structure.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/front/css/jquery-ui.theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/front/css/gsb.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/front/css/gsb2.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="row ">
+    <div class=" col-12 text-center nompage">
+        <h4>Modifiez vos frais</h4>
+    </div>
+
+    <div class="container text-center">
+        {% for message in app.flashes('success') %}
+
+            <div class="flash-notice">
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs-12 col-md-6 text-center">
+
+        <div class="container">
+
+            <div class="col-lg-12 text-center">
+                <h4>Frais Forfait</h4>
+            </div>
+
+            <br />
+            <br />
+
+            {{ form_start(formHorsforfait) }}
+            {{ form_widget(formHorsforfait) }}
+            {{ form_end(formHorsforfait) }}
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock body %}

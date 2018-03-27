@@ -8,21 +8,8 @@ use FrontBundle\Entity\user;
 
 class AdminController extends Controller
 {
-    public function indexAction($name)
-    {
-        return $this->render('', array('name' => $name));
-    }
 
-    public function homeadminAction()
-    {
-        return $this->render('FrontBundle:Admin:homeadmin.html.twig');
-    }
-
-    public function addfraistypeAction()
-    {
-        return $this->render('FrontBundle:Admin:addfraistype.html.twig');
-    }
-
+    /*Action d'ajoute d'uilisateur */
 
     public function addUtilisateurAction(Request $request)
     {
@@ -42,23 +29,9 @@ class AdminController extends Controller
 
         return $this->render('FrontBundle:Admin:addutilisateur.html.twig', array('form' => $form->createView()));
 
-
     }
 
-    public function gererfichesfraisAction()
-    {
-        return $this->render('FrontBundle:Admin:Gererfichesfrais.html.twig');
-    }
-
-    public function listeutilisateurAction()
-    {
-        return $this->render('FrontBundle:Admin:listeutilisateur.html.twig');
-    }
-
-    public function voirfichefraisAction()
-    {
-        return $this->render('FrontBundle:Admin:voirfichefrais.html.twig');
-    }
+    /*Action d'affichage de la liste des utiliasteur */
 
     public function listeuserAction()
     {
@@ -70,6 +43,8 @@ class AdminController extends Controller
             'users' => $users,
         ));
     }
+
+    /*Action de modificatin d'utilisateur */
 
     public function modifieruserAction(request $request, $id)
     {
@@ -94,6 +69,8 @@ class AdminController extends Controller
                 "referer" => $referer,
             ));
     }
+
+    /*Action de suppression d'utiliasteur */
 
     public function supprimeruserAction($id)
     {

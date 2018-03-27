@@ -1,3 +1,4 @@
+#Home et login
 homepage:
     path:     /
     defaults: { _controller: FrontBundle:Default:homePage }
@@ -6,7 +7,7 @@ login:
     path:     /login
     defaults: {_controller: FOSUserBundle:Security:login}
 
-
+# ajoute et suppression de frais
 
 addfrais:
     path:     /addfrais
@@ -20,19 +21,68 @@ removefraishorsforfait:
     path:     /frais/{id}/remove2
     defaults: {_controller: FrontBundle:Frais:suppfraishorsforfait}
 
+voirfichefrais:
+    path:   /fichefrais/{id}/voir
+    defaults: {_controller: FrontBundle:FicheFrais:voirFicheFrais}
+
+afficherfichefrais:
+    path:   /fichefrais/{id}/afficher
+    defaults: {_controller: FrontBundle:FicheFrais:afficherfiche}
+
+modifierfraisforfait:
+    path:   /fichefrais/{id}/modifierfrais
+    defaults: {_controller: FrontBundle:FicheFrais:modifierfraisforfait}
+
+modifierfraishorsforfait:
+    path:   /fichefrais/{id}/modifierfraish
+    defaults: {_controller: FrontBundle:FicheFrais:modifierfraishorsforfait}
+
+
+# Gestion  des fiche de frais par l'admin
 
 listefrais:
     path:     /listefrais
-    defaults: {_controller: FrontBundle:Utilisateur:listefrais}
+    defaults: {_controller: FrontBundle:FicheFrais:listefiche}
 
-modifierfrais:
-    path:     /modifierfrais
-    defaults: {_controller: FrontBundle:Utilisateur:modifierfrais}
+supprFiche:
+    path:     /admin/{id}/supprfiche
+    defaults: {_controller: FrontBundle:FicheFrais:supprFicheFrais}
 
+gererfichesfrais:
+    path:   /admin/gererfichesfrais
+    defaults: {_controller: FrontBundle:FicheFrais:gererFiches}
+
+
+# Validation et refus des frais de la fiche
+
+validerfraisforfait:
+    path:   /fraisforfait/{id}/valider
+    defaults: {_controller: FrontBundle:Frais:validerfraisforfait}
+
+refusfraisforfait:
+    path:   /fraisforfait/{id}/refuser
+    defaults: {_controller: FrontBundle:Frais:refuserfraisforfait}
+
+validerfraishorsforfait:
+    path:   /fraishorsforfait/{id}/valider
+    defaults: {_controller: FrontBundle:Frais:validerfraishorsforfait}
+
+refusfraishorsforfait:
+    path:   /fraishorsforfait/{id}/refuser
+    defaults: {_controller: FrontBundle:Frais:refuserfraishorsforfait}
+
+
+# Ajout et gestion de fraistype par l'admin
 
 addfraistype:
     path:   /admin/addfraistype
     defaults: {_controller: FrontBundle:FraisForfaitType:addFraisForfaitType}
+
+removefraistype:
+    path:   /admin/{id}/removeft
+    defaults: {_controller: FrontBundle:FraisForfaitType:removeFraisType}
+
+# Ajoute et gestion des des utilisateur par l'admin
 
 addutilisateur:
     path:   /admin/addutilisateur
@@ -41,15 +91,6 @@ addutilisateur:
 listeutilisateur:
     path:   /admin/listeutilisateur
     defaults: {_controller: FrontBundle:Admin:listeuser}
-
-gererfichesfrais:
-    path:   /admin/gererfichesfrais
-    defaults: {_controller: FrontBundle:FicheFrais:gererFiches}
-
-voirfichefrais:
-    path:   /admin/voirfichefrais
-    defaults: {_controller: FrontBundle:Admin:voirfichefrais}
-
 
 user_edit:
     path:   /user/{id}/edit

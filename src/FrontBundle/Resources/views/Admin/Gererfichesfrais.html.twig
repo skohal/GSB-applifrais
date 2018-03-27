@@ -21,6 +21,8 @@
                 <thead>
                 <tr>
                     <th class="userth">Id</th>
+                    <th class="userth">Nom</th>
+                    <th class="userth">Prénom</th>
                     <th class="userth">Mois</th>
                     <th class="userth">Annee</th>
                     <th class="userth">Montant valide</th>
@@ -30,18 +32,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for ficheFrai in ficheFrais %}
+                {% for ficheFrais in ficheFrais %}
 
                     <tr>
-                        <td class="usertd"><a href="{{ path('voirfichefrais', { 'id': ficheFrai.id }) }}">{{ ficheFrai.id }}</a></td>
-                        <td class="usertd">{{ ficheFrai.mois }}</td>
-                        <td class="usertd">{{ ficheFrai.annee }}</td>
-                        <td class="usertd">{{ ficheFrai.montantValide }}</td>
-                        <td class="usertd">{% if ficheFrai.dateCreation %}{{ ficheFrai.dateCreation|date('Y-m-d') }}{% endif %}</td>
-                        <td class="usertd">{% if ficheFrai.dateModif %}{{ ficheFrai.dateModif|date('Y-m-d') }}{% endif %}</td>
+                        <td class="usertd">{{ficheFrais.id}}</td>
+                        <td class="usertd">{{ ficheFrais.user.nom }}</td>
+                        <td class="usertd">{{ ficheFrais.user.prenom }}</td>
+                        <td class="usertd">{{ ficheFrais.mois | date('F') }}</td>
+                        <td class="usertd">{{ ficheFrais.annee }}</td>
+                        <td class="usertd">{{ ficheFrais.montantValide }}</td>
+                        <td class="usertd">{% if ficheFrais.dateCreation %}{{ ficheFrais.dateCreation|date('Y-m-d') }}{% endif %}</td>
+                        <td class="usertd">{% if ficheFrais.dateModif %}{{ ficheFrais.dateModif|date('Y-m-d') }}{% endif %}</td>
                         <td>
                             <ul>
-                                <a href="{{ path('voirfichefrais', { 'id': ficheFrai.id }) }}"><button type="button" class="btn btn-outline-primary userbt">Voir la Fiche</button></a>
+                                <a href="{{ path('voirfichefrais', { 'id': ficheFrais.id }) }}"><button type="button" class="btn btn-outline-primary userbt">Voir la Fiche</button></a>
+                                <a href="{{ path('supprFiche', { 'id': ficheFrais.id }) }}"><button type="button" class="btn btn-outline-danger userbt">Supprimer la Fiche</button></a>
                             </ul>
                         </td>
                     </tr>

@@ -67,17 +67,17 @@ class FicheFrais
 
     /**
      * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\user", inversedBy="fiche")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FraisForfait", mappedBy="Fiche", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FraisForfait", mappedBy="Fiche", cascade={"persist", "remove"})
      */
     private $fraisForfaits;
 
     /**
-     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FraisHorsForfait", mappedBy="Fiche", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FraisHorsForfait", mappedBy="Fiche", cascade={"persist", "remove"})
      */
     private $fraisHorsForfait;
 
@@ -287,6 +287,9 @@ class FicheFrais
     {
         $this->fraisForfaits = new \Doctrine\Common\Collections\ArrayCollection();
         $this->fraisHorsForfaits = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->Etat = new \Doctrine\Common\Collections\ArrayCollection();
+
+
     }
 
     /**

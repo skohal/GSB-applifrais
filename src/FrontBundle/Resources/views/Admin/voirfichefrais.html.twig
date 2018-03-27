@@ -1,1 +1,114 @@
 {% extends '@Front/Default/base.html.twig' %}
+
+{% block title %}Voir fiche | Appli-Frais GSB{% endblock %}
+
+{% block body %}
+    <div class="row margetop" xmlns="http://www.w3.org/1999/html"></div>
+    <div class="container">
+        <div class="row">
+            <h4> Consultation de la fiche de frais de
+                {{ fichefrais.user.nom }} {{ fichefrais.user.prenom }} {{ fichefrais.user.username }}</h4>
+        </div>
+        <div class="container">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 text-center tabaddfrais">
+                        <h5>Frais forfaits:</h5>
+                        <table class="table">
+                            <thead>
+                            <tr>
+
+                                <th class="userth">libelle</th>
+                                <th class="userth">quantité</th>
+                                <th class="userth">Prix</th>
+                                <th class="userth">Total</th>
+                                <th class="userth">Action</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for fraisforfait in fichefrais.fraisForfaits %}
+
+                                <tr>
+
+                                    <td class="usertd">{{ fraisforfait.fraisType.libelle }}</td>
+                                    <td class="usertd">{{ fraisforfait.quantite }}</td>
+                                    <td class="usertd">{{ fraisforfait.fraisType.montant }}€</td>
+                                    <td class="usertd">{{ fraisforfait.quantite * fraisforfait.fraisType.montant }}€</td>
+                                    <td class="usertd"> {% if fraisforfait.etat.id < 3 %}
+                                            <a href="{{ path('validerfraisforfait',{id : fraisforfait.id }) }}">Valider <button class="btn-primary">done</button></a>
+                                        {% elseif fraisforfait.etat.id == 3 %}
+                                            <a href="{{ path('refusfraisforfait',{id : fraisforfait.id }) }}">Rétablir <button class="btn-danger">restore</button></a>
+                                        {% endif %}</td>
+
+
+
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">
+                                        Aucun Frais forfait rentré
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 text-center tabaddfrais">
+                        <h5>Frais hors forfaits:</h5>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+
+                                <th class="userth">libelle</th>
+                                <th class="userth">quantité</th>
+                                <th class="userth">Prix</th>
+                                <th class="userth">Total</th>
+                                <th class="userth">Action</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for fraishorsforfait in fichefrais.fraisHorsForfait %}
+
+                                <tr>
+
+                                    <td class="usertd">{{ fraishorsforfait.libelle }}</td>
+                                    <td class="usertd">{{ fraishorsforfait.quantite }}</td>
+                                    <td class="usertd">{{ fraishorsforfait.montant }}€</td>
+                                    <td class="usertd">{{ fraishorsforfait.quantite * fraishorsforfait.montant }}€</td>
+                                    <td class="usertd"> {% if fraishorsforfait.etat.id < 3 %}
+                                            <a href="{{ path('validerfraishorsforfait',{id : fraishorsforfait.id }) }}">Valider <button class="btn-primary">done</button></a>
+                                        {% elseif fraishorsforfait.etat.id == 3 %}
+                                            <a class="grey-text" href="{{ path('refusfraishorsforfait',{id : fraishorsforfait.id }) }}">Rétablir <button class="btn-danger">restore</button></a>
+                                        {% endif %}</td>
+
+
+
+
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">
+                                        Aucun Frais Hors forfait rentré
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
+
+
+

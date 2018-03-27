@@ -74,124 +74,136 @@
             </div>
         </div>
 
+        <br/>
+        <br/>
 
 
-        <div class="col-xs-12 col-md-6 offset-md-1  text-center tabaddfrais">
 
-            <h4> Frais Forfait entrés</h4>
+            <div class="col-xs-12 col-md-6 text-center tabaddfrais">
 
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>
-                        Date
-                    </th>
-                    <th>
-                        libelle
-                    </th>
-                    <th>
-                        Quantite
-                    </th>
-                    <th>
-                        Montant unitaire
-                    </th>
-                    <th>
-                        Total
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for unFraisForfait in fichefraisencours.fraisForfaits %}
+                <h4> Frais Forfait entrés</h4>
+
+                <table class="table">
+                    <thead>
                     <tr>
-                        <td>
+                        <th class="userth">
+                            Date
+                        </th>
+                        <th class="userth">
+                            libelle
+                        </th>
+                        <th class="userth">
+                            Quantite
+                        </th>
+                        <th class="userth">
+                            Montant unitaire
+                        </th>
+                        <th class="userth">
+                            Total
+                        </th>
+                        <th class="userth">
+                            Action
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    {% for unFraisForfait in fichefraisencours.fraisForfaits %}
+                        <td class="usertd">
                             {{ unFraisForfait.date | date("d-M-Y")}}
                         </td>
-                        <td>
+                        <td class="usertd">
                             {{ unFraisForfait.fraisType.libelle }}
                         </td>
-                        <td>
+                        <td class="usertd">
                             {{ unFraisForfait.quantite }}
                         </td>
-                        <td>
+                        <td class="usertd">
                             {{ unFraisForfait.fraisType.montant | number_format(2, ',', ' ') }}€
                         </td>
-                        <td>
+                        <td class="usertd">
                             {{ (unFraisForfait.quantite *  unFraisForfait.fraisType.montant)  | number_format(2, ',', ' ')  }}€
-
+                        </td>
+                        <td class="usertd">
                             <a href="{{ path('removefraisforfait', { id: unFraisForfait.id }) }}"><i class="fas fa-times"></i></a>
                         </td>
                     </tr>
-                {% else %}
+                    {% else %}
+                        <tr>
+                            <td class="usertd" colspan="4">
+                                Aucun Frais forfait
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="col-xs-12 col-md-6 text-center tabaddfrais">
+
+                <h4> Frais Hors Forfait entrés</h4>
+
+                <table class="table">
+                    <thead>
                     <tr>
-                        <td colspan="4">
-                            Aucun Frais forfait
-                        </td>
-
+                        <th class="userth">
+                            Date
+                        </th>
+                        <th class="userth">
+                            libelle
+                        </th>
+                        <th class="userth">
+                            Quantite
+                        </th>
+                        <th class="userth">
+                            Montant unitaire
+                        </th>
+                        <th class="userth">
+                            Total
+                        </th>
+                        <th class="userth">
+                            Action
+                        </th>
                     </tr>
-                {% endfor %}
-                </tbody>
+                    </thead>
+                    <tbody>
+                    {% for unFraisHorsForfait in fichefraisencours.fraisHorsForfait %}
+                        <tr>
+                            <td class="usertd">
+                                {{ unFraisHorsForfait.date | date("d-M-Y")}}
+                            </td>
+                            <td class="usertd">
+                                {{ unFraisHorsForfait.libelle }}
+                            </td>
+                            <td class="usertd">
+                                {{ unFraisHorsForfait.quantite }}
+                            </td>
+                            <td class="usertd">
+                                {{ unFraisHorsForfait.montant | number_format(2, ',', ' ') }}€
+                            </td>
+                            <td class="usertd">
+                                {{ (unFraisHorsForfait.quantite *  unFraisHorsForfait.montant)  | number_format(2, ',', ' ')  }}€
+                            </td>
+                            <td class="usertd">
+                                <a href="{{ path('removefraishorsforfait', { id: unFraisHorsForfait.id }) }}"><i class="fas fa-times"></i></a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td class="usertd" colspan="4">
+                                Aucun Frais forfait
+                            </td>
 
-            </table>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
 
-        </div>
+                </table>
+            </div>
 
-        <div class="col-xs-12 col-md-6 text-center tabaddfrais">
-
-            <h4> Frais Hors Forfait entrés</h4>
-
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>
-                        Date
-                    </th>
-                    <th>
-                        libelle
-                    </th>
-                    <th>
-                        Quantite
-                    </th>
-                    <th>
-                        Montant unitaire
-                    </th>
-                    <th>
-                        Total
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for unFraisHorsForfait in fichefraisencours.fraisHorsForfait %}
-                    <tr>
-                        <td>
-                            {{ unFraisHorsForfait.date | date("d-M-Y")}}
-                        </td>
-                        <td>
-                            {{ unFraisHorsForfait.libelle }}
-                        </td>
-                        <td>
-                            {{ unFraisHorsForfait.quantite }}
-                        </td>
-                        <td>
-                            {{ unFraisHorsForfait.montant | number_format(2, ',', ' ') }}€
-                        </td>
-                        <td>
-                            {{ (unFraisHorsForfait.quantite *  unFraisHorsForfait.montant)  | number_format(2, ',', ' ')  }}€
-
-                            <a href="{{ path('removefraishorsforfait', { id: unFraisHorsForfait.id }) }}"><i class="fas fa-times"></i></a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="4">
-                            Aucun Frais forfait
-                        </td>
-
-                    </tr>
-                {% endfor %}
-                </tbody>
-
-            </table>
-        </div>
     </div>
 
 {%  endblock body %}

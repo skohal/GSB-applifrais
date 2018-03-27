@@ -183,4 +183,6 @@ class FraisForfait
     {
         return $this->etat;
     }
+
+
 }

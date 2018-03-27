@@ -216,4 +216,5 @@ class FraisHorsForfait
     {
         return $this->etat;
     }
+
 }

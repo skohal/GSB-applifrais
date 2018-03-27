@@ -348,3 +348,11 @@ body * {
 .tabaddfrais{
     padding-bottom: 100px;
 }
+
+.fa-times{
+    color: red;
+}
+
+.table{
+    font-size: 14px;
+}
