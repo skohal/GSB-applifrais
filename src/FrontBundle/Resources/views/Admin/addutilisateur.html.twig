@@ -4,13 +4,14 @@
 
 {% block body %}
 
-    <div class="row centered">
+    <div class="row manie centered">
         <div class="container col-3 formcontainer">
         </div>
     </div>
 
-    <div class="container col-md-6 formcontainer">
-        <div class="addutilisateur">
+    <div class="row manie justify-content-center">
+        <div class="container col-6 col-sm-6 col-md-6 col-lg-6 formcontainer">
+            <div class="addutilisateur">
 
                 {% for message in app.flashes('success') %}
                     <div class="flash-notice">
@@ -31,6 +32,7 @@
 
             </div>
         </div>
+    </div>
     </div>
 
 

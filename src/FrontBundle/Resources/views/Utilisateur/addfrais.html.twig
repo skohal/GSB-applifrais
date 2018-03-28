@@ -125,7 +125,7 @@
                             {{ (unFraisForfait.quantite *  unFraisForfait.fraisType.montant)  | number_format(2, ',', ' ')  }}€
                         </td>
                         <td class="usertd">
-                            <a href="{{ path('removefraisforfait', { id: unFraisForfait.id }) }}"><i class="fas fa-times"></i></a>
+                            <a href="{{ path('removefraisforfait', { id: unFraisForfait.id }) }}"><button class="btn btn-danger userbt"><i class="far fa-trash-alt"></i></button></a>
                         </td>
                     </tr>
                     {% else %}
@@ -188,7 +188,7 @@
                                 {{ (unFraisHorsForfait.quantite *  unFraisHorsForfait.montant)  | number_format(2, ',', ' ')  }}€
                             </td>
                             <td class="usertd">
-                                <a href="{{ path('removefraishorsforfait', { id: unFraisHorsForfait.id }) }}"><i class="fas fa-times"></i></a>
+                                <a href="{{ path('removefraishorsforfait', { id: unFraisHorsForfait.id }) }}"><button class="btn btn-danger userbt"><i class="far fa-trash-alt"></i></button></a>
                             </td>
                         </tr>
                     {% else %}

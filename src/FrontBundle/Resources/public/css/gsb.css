@@ -23,6 +23,7 @@
 
 .footer a {
     color: #68A4D1;
+    font-size: 13px;
 }
 
 .footer p {
@@ -74,7 +75,7 @@ body * {
 
 
 .container-box {
-    width: 960px;
+    width: auto;
     margin: 50px auto;
     padding: 5px;
     padding-left: 20px;
@@ -256,10 +257,6 @@ body * {
     margin-top: 95px;
 }
 
-.row {
-    margin-right: -20px;
-}
-
 .form-control {
     width: 70%;
     margin-top: -38px;
@@ -347,14 +344,13 @@ body * {
     height: 125px;
 }
 
-.fa-times{
-    color: red;
-}
-
 .table{
     font-size: 14px;
 }
 
+.table th, .table td {
+    padding: 0.15rem;
+}
 
 .navbar-brand {
     width: 100px;
@@ -410,4 +406,17 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 
 .logincontainer{
     margin-top: -100px;
+}
+
+a:-webkit-any-link {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.manie {
+    margin-right: 0px;
+}
+
+.gererfichefrais {
+    padding-left: 0px;
 }

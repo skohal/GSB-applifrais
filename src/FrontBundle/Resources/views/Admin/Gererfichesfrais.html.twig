@@ -6,53 +6,56 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-lg-12 text-center">
 
-            <h1>Liste Fichefrais</h1>
+                <h1>Liste Fichefrais</h1>
 
-            <div class="row">
-                <ul id="nav-fiches">
-                    <ul class="btn-link" id="li-encours">Fiche en Cours</ul>
-                    <ul class="btn-link" id="li-cloturees">Fiche Cloturées</ul>
-                    <ul class="btn-link" id="li-validees">Fiche Valitées</ul>
-                </ul>
+                <div class="col-lg-12 text-center">
+                    <ul class="gererfichefrais" id="nav-fiches">
+                        <a href="#" class="btn-link" id="li-encours">Fiche en Cours</a> -
+                        <a href="#" class="btn-link" id="li-cloturees">Fiche Cloturées</a> -
+                        <a href="#" class="btn-link" id="li-validees">Fiche Valitées</a>
+                    </ul>
+                </div>
+
+                <div class="col-lg-12 text-center">
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="userth">Id</th>
+                            <th class="userth">Nom</th>
+                            <th class="userth">Prénom</th>
+                            <th class="userth">Mois</th>
+                            <th class="userth">Annee</th>
+                            <th class="userth">Montant valide</th>
+                            <th class="userth">Date creation</th>
+                            <th class="userth">Date modif</th>
+                            <th class="userth">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for ficheFrais in ficheFrais %}
+
+                            <tr>
+                                <td class="usertd">{{ficheFrais.id}}</td>
+                                <td class="usertd">{{ ficheFrais.user.nom }}</td>
+                                <td class="usertd">{{ ficheFrais.user.prenom }}</td>
+                                <td class="usertd">{{ ficheFrais.mois | date('F') }}</td>
+                                <td class="usertd">{{ ficheFrais.annee }}</td>
+                                <td class="usertd">{{ ficheFrais.montantValide }}</td>
+                                <td class="usertd">{% if ficheFrais.dateCreation %}{{ ficheFrais.dateCreation|date('Y-m-d') }}{% endif %}</td>
+                                <td class="usertd">{% if ficheFrais.dateModif %}{{ ficheFrais.dateModif|date('Y-m-d') }}{% endif %}</td>
+                                <td class="usertd">
+                                    <a href="{{ path('voirfichefrais', { 'id': ficheFrais.id }) }}"><button type="button" class="btn btn-outline-primary userbt"><i class="fas fa-eye"></i></button></a>
+                                    <a href="{{ path('supprFiche', { 'id': ficheFrais.id }) }}"><button type="button" class="btn btn-outline-danger userbt"><i class="far fa-trash-alt"></i></button></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-
-            <table class="table">
-                <thead>
-                <tr>
-                    <th class="userth">Id</th>
-                    <th class="userth">Nom</th>
-                    <th class="userth">Prénom</th>
-                    <th class="userth">Mois</th>
-                    <th class="userth">Annee</th>
-                    <th class="userth">Montant valide</th>
-                    <th class="userth">Date creation</th>
-                    <th class="userth">Date modif</th>
-                    <th class="userth">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for ficheFrais in ficheFrais %}
-
-                    <tr>
-                        <td class="usertd">{{ficheFrais.id}}</td>
-                        <td class="usertd">{{ ficheFrais.user.nom }}</td>
-                        <td class="usertd">{{ ficheFrais.user.prenom }}</td>
-                        <td class="usertd">{{ ficheFrais.mois | date('F') }}</td>
-                        <td class="usertd">{{ ficheFrais.annee }}</td>
-                        <td class="usertd">{{ ficheFrais.montantValide }}</td>
-                        <td class="usertd">{% if ficheFrais.dateCreation %}{{ ficheFrais.dateCreation|date('Y-m-d') }}{% endif %}</td>
-                        <td class="usertd">{% if ficheFrais.dateModif %}{{ ficheFrais.dateModif|date('Y-m-d') }}{% endif %}</td>
-                        <td>
-                            <ul>
-                                <a href="{{ path('voirfichefrais', { 'id': ficheFrais.id }) }}"><button type="button" class="btn btn-outline-primary userbt">Voir la Fiche</button></a>
-                                <a href="{{ path('supprFiche', { 'id': ficheFrais.id }) }}"><button type="button" class="btn btn-outline-danger userbt">Supprimer la Fiche</button></a>
-                            </ul>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
         </div>
     </div>
 
