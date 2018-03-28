@@ -4,49 +4,55 @@
 
     <div class="margetop"></div>
 
-    <div class="col-xs-12 col-md-12 text-center tabaddfrais">
+    <div class="col-12 col-md-12 text-center tabaddfrais">
 
-        <h3> Liste de vos fiches</h3>
+        <h3 class=""> Liste de vos fiches</h3>
 
-        <table class="table">
-            <thead>
-            <tr>
+        <div class="margetop"></div>
 
-                <th>
-                    Mois de la fiche
-                </th>
-                <th>
-                    Année de la fiche
-                </th>
-                <th>
-                    Action
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for laficheFrais in ficheFrais %}
+        <div class="row">
+            <div class="col-12 col-md-12">
 
-                <tr>
-                    <td class="usertd">{{ laficheFrais.mois | date('F') }}</td>
-                    <td class="usertd">{{ laficheFrais.annee }}</td>
-                    <td>
-                        <ul>
-                            <a href="{{ path('afficherfichefrais', { 'id': laficheFrais.id }) }}"><button type="button" class="btn btn-info userbt">Voir la Fiche</button></a>
-                        </ul>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="4">
-                        Aucune fiche
-                    </td>
+                <table class="table">
+                    <thead>
+                    <tr>
 
-                </tr>
-            {% endfor %}
-            </tbody>
+                        <th>
+                            Mois de la fiche
+                        </th>
+                        <th>
+                            Année de la fiche
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for laficheFrais in ficheFrais %}
 
-        </table>
+                        <tr>
+                            <td class="usertd">{{ laficheFrais.mois | date('F') }}</td>
+                            <td class="usertd">{{ laficheFrais.annee }}</td>
+                            <td>
+                                <ul>
+                                    <a href="{{ path('afficherfichefrais', { 'id': laficheFrais.id }) }}"><button type="button" class="btn btn-info userbt">Voir la Fiche</button></a>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">
+                                Aucune fiche
+                            </td>
 
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
     </div>
 
 {% endblock body %}

@@ -399,3 +399,15 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 .table thead th {
     text-align: center;
 }
+
+.homeuser{
+    padding-left: 0px;
+}
+
+.homeadmin{
+    padding-left: 0px;
+}
+
+.logincontainer{
+    margin-top: -100px;
+}
