@@ -1,0 +1,44 @@
+{% extends '@Front/Default/base.html.twig' %}
+
+{% block body %}
+
+    <div class="margetop"></div>
+
+    <h4>Plan du site</h4>
+
+    <div class="row">
+        <div class="container">
+            <h5>Page utilisateur</h5>
+
+            <ul>
+
+                <a href="{{ path ('homepage') }}">Page d'accueil utilisateur</a>
+                <a href="{{ path ('addfrais') }}">Page d'ajoute de frais pour l'utilisateur</a>
+                <a href="{{ path ('afficherfichefrais') }}">Page d'ffichage des fiche frais</a>
+
+
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <h5>Page administrateur</h5>
+
+            <ul>
+
+                <a href="{{ path ('homepage') }}">Page d'accueil Administrateur</a>
+                <a href="{{ path ('addfraistype') }}">Page d'ajoute de frais type pour l'Administrateur</a>
+                <a href="{{ path ('gererfichesfrais') }}">Page d'ffichage des fiche frais pour l'Administrateur</a>
+                <a href="{{ path ('addutilisateur') }}">Page d'ajoute d'utilisateur</a>
+                <a href="{{ path ('listeutilisateur') }}">Page de liste</a>
+
+
+            </ul>
+
+        </div>
+    </div>
+
+
+{% endblock body %}

@@ -94,4 +94,10 @@ class DefaultController extends Controller
     }
 
 
+    public function siteplanAction(){
+
+        return $this->render('FrontBundle:Default:siteplan.html.twig');
+
+    }
+
 }

@@ -7,7 +7,13 @@ login:
     path:     /login
     defaults: {_controller: FOSUserBundle:Security:login}
 
-# ajoute et suppression de frais
+#Plan du site
+
+plandusite:
+    path:   /siteplan
+    defaults: {_controller: FrontBundle:Default:siteplan}
+
+# ajoute et suppression de frais niveau utilisateur
 
 addfrais:
     path:     /addfrais
