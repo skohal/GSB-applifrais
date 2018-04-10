@@ -37,9 +37,9 @@
                                         <td class="usertd">{{ fraisforfait.fraisType.montant }}€</td>
                                         <td class="usertd">{{ fraisforfait.quantite * fraisforfait.fraisType.montant }}€</td>
                                         <td class="usertd"> {% if fraisforfait.etat.id < 3 %}
-                                                <a href="{{ path('validerfraisforfait',{id : fraisforfait.id }) }}"><button class="btn-primary"><i class="far fa-check-circle"></i></button></a>
+                                                <a href="{{ path('validerfraisforfait',{id : fraisforfait.id }) }}"><button class="btn btn-outline-primary userbt"><i class="far fa-check-circle"></i></button></a>
                                             {% elseif fraisforfait.etat.id == 3 %}
-                                                <a href="{{ path('refusfraisforfait',{id : fraisforfait.id }) }}"><button class="btn-danger"><i class="far fa-times-circle"></i></button></a>
+                                                <a href="{{ path('refusfraisforfait',{id : fraisforfait.id }) }}"><button class="btn btn-outline-danger userbt"><i class="far fa-times-circle"></i></button></a>
                                             {% endif %}</td>
 
 
@@ -82,9 +82,9 @@
                                         <td class="usertd">{{ fraishorsforfait.montant }}€</td>
                                         <td class="usertd">{{ fraishorsforfait.quantite * fraishorsforfait.montant }}€</td>
                                         <td class="usertd"> {% if fraishorsforfait.etat.id < 3 %}
-                                                <a href="{{ path('validerfraishorsforfait',{id : fraishorsforfait.id }) }}"><button class="btn-primary"><i class="far fa-check-circle"></i></button></a>
+                                                <a href="{{ path('validerfraishorsforfait',{id : fraishorsforfait.id }) }}"><button class="btn btn-outline-primary userbt"><i class="far fa-check-circle"></i></button></a>
                                             {% elseif fraishorsforfait.etat.id == 3 %}
-                                                <a class="grey-text" href="{{ path('refusfraishorsforfait',{id : fraishorsforfait.id }) }}"><button class="btn-danger"><i class="far fa-times-circle"></i></button></a>
+                                                <a class="grey-text" href="{{ path('refusfraishorsforfait',{id : fraishorsforfait.id }) }}"><button class="btn btn-outline-danger userbt"><i class="far fa-times-circle"></i></button></a>
                                             {% endif %}</td>
 
 

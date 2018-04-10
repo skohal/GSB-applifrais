@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<div class="row centered">
+<div class="row manie">
     <div class="container col-3 formcontainer">
     </div>
 </div>
@@ -31,8 +31,8 @@
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 text-center tabaddfrais">
+    <div class="row manie">
+        <div class="col-md-12 text-center tabaddfraisadmin">
 
             <h4>Liste Frais Forfait type</h4>
 
@@ -63,7 +63,7 @@
                         {{ lesfraistypes.montant }}
                     </td>
                     <td>
-                        <a href="{{ path('removefraistype', { id: lesfraistypes.id }) }}"><i class="fas fa-times"></i></a>
+                        <a href="{{ path('removefraistype', { id: lesfraistypes.id }) }}"><i class="fas fa-times" style="color: #bd2130"></i></a>
                     </td>
                 </tr>
                 {% else %}

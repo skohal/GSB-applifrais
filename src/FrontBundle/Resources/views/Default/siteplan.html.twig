@@ -4,38 +4,51 @@
 
     <div class="margetop"></div>
 
-    <h4>Plan du site</h4>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-center">
 
-    <div class="row">
-        <div class="container">
-            <h5>Page utilisateur</h5>
+        <h4>Plan du site</h4>
 
-            <ul>
+    </div>
 
-                <a href="{{ path ('homepage') }}">Page d'accueil utilisateur</a>
-                <a href="{{ path ('addfrais') }}">Page d'ajoute de frais pour l'utilisateur</a>
-                <a href="{{ path ('afficherfichefrais') }}">Page d'ffichage des fiche frais</a>
+    <div class="margetop"></div>
 
+    <div class="row manie">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-center">
+            <div class="container">
+                <h5>Page utilisateur</h5>
 
-            </ul>
+                <p>
+                    <a href="{{ path ('homepage') }}">Page d'accueil utilisateur</a>
+                </p>
+                <p>
+                    <a href="{{ path ('addfrais') }}">Page d'ajoute de frais pour l'utilisateur</a>
+                </p>
 
+            </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="margetop"></div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-center">
         <div class="container">
             <h5>Page administrateur</h5>
 
-            <ul>
-
+            <p>
                 <a href="{{ path ('homepage') }}">Page d'accueil Administrateur</a>
+            </p>
+            <p>
                 <a href="{{ path ('addfraistype') }}">Page d'ajoute de frais type pour l'Administrateur</a>
+            </p>
+            <p>
                 <a href="{{ path ('gererfichesfrais') }}">Page d'ffichage des fiche frais pour l'Administrateur</a>
+            </p>
+            <p>
                 <a href="{{ path ('addutilisateur') }}">Page d'ajoute d'utilisateur</a>
+            </p>
+            <p>
                 <a href="{{ path ('listeutilisateur') }}">Page de liste</a>
-
-
-            </ul>
+            </p>
 
         </div>
     </div>
