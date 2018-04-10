@@ -361,6 +361,11 @@ body * {
     padding-top: 100px;
 }
 
+.tabaddfraisadmin{
+    padding-bottom: 40px;
+    padding-top: 0px;
+}
+
 .form-group2 {
     display: inline-block;
 }
