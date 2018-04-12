@@ -22,12 +22,7 @@ class FraisForfaitType extends AbstractType
                 'choice_label' => 'libelle',
             ))
         ->add('quantite')
-        ->add("Ajouter", SubmitType::class, array(
-        'attr'  => array('class' => 'btn','center-align')));
-
-
-
-
+            ;
     }
     
     /**

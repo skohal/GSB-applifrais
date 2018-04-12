@@ -36,13 +36,12 @@ afficherfichefrais:
     defaults: {_controller: FrontBundle:FicheFrais:afficherfiche}
 
 modifierfraisforfait:
-    path:   /fichefrais/{id}/modifierfrais
+    path:   /fiche/fichefrais/{id}/modifierfrais
     defaults: {_controller: FrontBundle:FicheFrais:modifierfraisforfait}
 
 modifierfraishorsforfait:
-    path:   /fichefrais/{id}/modifierfraish
+    path:   /fiche/fichefrais/{id}/modifierfraish
     defaults: {_controller: FrontBundle:FicheFrais:modifierfraishorsforfait}
-
 
 # Gestion  des fiche de frais par l'admin
 

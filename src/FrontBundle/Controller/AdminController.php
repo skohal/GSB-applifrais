@@ -3,6 +3,7 @@
 namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use FrontBundle\Entity\user;
 
@@ -16,6 +17,8 @@ class AdminController extends Controller
         $user = new user();
         $user->setDateCreation(new \DateTime());
         $form = $this->createForm('FrontBundle\Form\userType', $user);
+        $form ->add("Ajouter", SubmitType::class, array(
+            'attr'  => array('class' => 'btn','center-align')));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -24,7 +27,7 @@ class AdminController extends Controller
             $em->flush();
             $this->addFlash('success', 'Utilisateur ajouté');
         } else {
-            $this->addFlash('notice', 'Erreur: uitilisateur non ajouté');
+            $this->addFlash('notice', 'Erreur: utilisateur non ajouté');
         }
 
         return $this->render('FrontBundle:Admin:addutilisateur.html.twig', array('form' => $form->createView()));
@@ -52,6 +55,8 @@ class AdminController extends Controller
 
         $user = $this->getDoctrine()->getRepository('FrontBundle:user')->find($id);
         $form = $this->createForm('FrontBundle\Form\userType', $user);
+        $form ->add("Modifier", SubmitType::class, array(
+            'attr'  => array('class' => 'btn','center-align')));
         $form->handleRequest($request);
         $user->getId();
 

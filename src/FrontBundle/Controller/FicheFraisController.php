@@ -2,6 +2,7 @@
 
 namespace FrontBundle\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -100,8 +101,6 @@ class FicheFraisController extends Controller
         $ficheutilisateur = $this->getDoctrine()->getRepository('FrontBundle:FicheFrais')->find($id);
 
 
-
-
         return $this->render("@Front/Utilisateur/afficherfrais.html.twig",array(
             'ficheutilisateur' => $ficheutilisateur
                      ));
@@ -116,14 +115,15 @@ class FicheFraisController extends Controller
 
         $fraisforfait = $this->getDoctrine()->getRepository('FrontBundle:FraisForfait')->find($id);
         $formforfait = $this->createForm('FrontBundle\Form\FraisForfaitType',$fraisforfait);
+        $formforfait->add("Modifier", SubmitType::class, array(
+            'attr'  => array('class' => 'btn','center-align')));
         $formforfait ->handleRequest($request);
-        $fraisforfait->getId();
 
         if($formforfait->isSubmitted()&& $formforfait->isValid()){
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            return $this->redirectToRoute('afficherfichefrais');
+            return $this->redirectToRoute('afficherfichefrais',array('id' => $fraisforfait ->getFiche()->getId()));
         }
         return $this->render('@Front/Utilisateur/modifierfraisforfait.html.twig',
             array('formforfait' => $formforfait->createView(),
@@ -138,18 +138,23 @@ class FicheFraisController extends Controller
 
         $fraishorsforts = $this->getDoctrine()->getRepository('FrontBundle:FraisHorsForfait')->find($id);
         $formhorsforfait = $this->createForm('FrontBundle\Form\FraisHorsForfaitType',$fraishorsforts);
+        $formhorsforfait->add("Modifier", SubmitType::class, array(
+        'attr'  => array('class' => 'btn','center-align')));
         $formhorsforfait->handleRequest($request);
-        $fraishorsforts->getId();
+
 
         if($formhorsforfait->isSubmitted()&& $formhorsforfait->isValid()){
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            return $this->redirectToRoute('afficherfichefrais');
+            return $this->redirectToRoute('afficherfichefrais', array('id'=>$fraishorsforts->getFiche()->getId()));
+
         }
         return $this->render('@Front/Utilisateur/modifierfraishorsforfait.html.twig',
             array('formHorsforfait' => $formhorsforfait->createView(),
                 "referer" => $referer));
     }
+
+
 }
 

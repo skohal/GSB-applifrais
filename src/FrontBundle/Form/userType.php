@@ -49,9 +49,7 @@ class userType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'required'    => true,
-            ))
-            ->add("Ajouter", SubmitType::class, array(
-                'attr'  => array('class' => 'btn','center-align')));
+            ));
     }
     
     /**

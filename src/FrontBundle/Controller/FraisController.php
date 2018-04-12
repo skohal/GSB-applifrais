@@ -62,6 +62,8 @@ class FraisController extends Controller
         $fraisforfait->setEtat($etatInitial);
         $fraisforfait->setDate(new \DateTime());
         $formforfait = $this->createForm('FrontBundle\Form\FraisForfaitType', $fraisforfait);
+        $formforfait->add("Ajouter", SubmitType::class, array(
+            'attr'  => array('class' => 'btn','center-align')));
         $formforfait->handleRequest($request);
 
 
@@ -77,6 +79,8 @@ class FraisController extends Controller
         $fraisHorsforfait->setEtat($etatInitial);
         $fraisHorsforfait->setDate(new \DateTime());
         $formHorsforfait = $this->createForm('FrontBundle\Form\FraisHorsForfaitType', $fraisHorsforfait);
+        $formHorsforfait->add("Ajouter", SubmitType::class, array(
+            'attr'  => array('class' => 'btn','center-align')));
         $formHorsforfait->handleRequest($request);
 
         if ($formHorsforfait->isSubmitted() && $formHorsforfait->isValid()) {

@@ -16,9 +16,7 @@ class FraisForfaitTypeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('libelle')
-            ->add('montant',MoneyType::class, array('currency'=>''))
-            ->add("Ajouter", SubmitType::class, array(
-                'attr'  => array('class' => 'btn','center-align')));
+            ->add('montant',MoneyType::class, array('currency'=>''));
     }
     
     /**

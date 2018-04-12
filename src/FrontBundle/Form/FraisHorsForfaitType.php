@@ -18,8 +18,7 @@ class FraisHorsForfaitType extends AbstractType
         $builder->add('libelle')
             ->add('montant',MoneyType::class, array('currency'=>''))
             ->add('quantite')
-            ->add("Ajouter", SubmitType::class, array(
-                'attr'  => array('class' => 'btn','center-align')));
+           ;
 
     }
     

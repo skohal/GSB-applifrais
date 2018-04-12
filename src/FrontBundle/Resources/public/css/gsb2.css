@@ -293,3 +293,7 @@ addutilisateur h4{
 .table th, .table td {
     padding: 0.15rem;
 }
+
+.formhf{
+    padding-bottom: 100px;
+}

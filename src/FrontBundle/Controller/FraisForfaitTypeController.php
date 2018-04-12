@@ -4,6 +4,7 @@ namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontBundle\Entity\FraisForfaitType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 class FraisForfaitTypeController extends Controller
@@ -17,6 +18,8 @@ class FraisForfaitTypeController extends Controller
 
         $fraisforfaittype = new fraisForfaitType();
         $formfft = $this->createForm('FrontBundle\Form\FraisForfaitTypeType', $fraisforfaittype);
+        $formfft ->add("Ajouter", SubmitType::class, array(
+            'attr'  => array('class' => 'btn','center-align')));
         $formfft->handleRequest($request);
 
         if ($formfft->isSubmitted() && $formfft->isValid()) {
@@ -24,6 +27,8 @@ class FraisForfaitTypeController extends Controller
             $em->persist($fraisforfaittype);
             $em->flush();
             $this->addFlash('success','Frais ajouté');
+
+            return $this->redirectToRoute('addfraistype');
 
         }
         return $this->render('@Front/Admin/addfraistype.html.twig',
