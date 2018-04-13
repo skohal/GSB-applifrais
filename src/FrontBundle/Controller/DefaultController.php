@@ -55,11 +55,17 @@ class DefaultController extends Controller
                         array('user'=> $user,
                             'roles' => $roles
                         ));
-                } else {
+                } else if($role == 'ROLE_COMPTABLE') {
+                    return $this->render('@Front/Comptable/homepageComptable.html.twig',
+                        array('user'=> $user,
+                            'roles' => $roles
+                        ));
+                } else{
                     return $this->render('@Front/Utilisateur/homeutilisateur.html.twig',
                         array('user'=> $user,
                             'roles' => $roles
                         ));
+
                 }
             }
         } else {
@@ -68,7 +74,7 @@ class DefaultController extends Controller
     }
 
 
-    /*Action  */
+    /*Action  useless*/
 
     public function validerFicheAction(Request $request, $id)
     {

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use FrontBundle\Entity\user;
+use FrontBundle\Entity\FraisForfaitType;
 
 class AdminController extends Controller
 {
@@ -26,6 +27,8 @@ class AdminController extends Controller
             $em->persist($user);
             $em->flush();
             $this->addFlash('success', 'Utilisateur ajouté');
+
+            return$this->redirectToRoute("listeutilisateur");
         } else {
             $this->addFlash('notice', 'Erreur: utilisateur non ajouté');
         }
@@ -58,13 +61,16 @@ class AdminController extends Controller
         $form ->add("Modifier", SubmitType::class, array(
             'attr'  => array('class' => 'btn','center-align')));
         $form->handleRequest($request);
+
         $user->getId();
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setDateModif(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->flush();
+            $this->addFlash("success", "Utilisateur modifié avec succès");
 
-            return $this->redirectToRoute('addutilisateur');
+            return $this->redirectToRoute('listeutilisateur');
 
         }
 
@@ -91,6 +97,51 @@ class AdminController extends Controller
         return $this->redirectToRoute('listeutilisateur');
 
     }
+    /*Action permet a l'admin d'ajoute de nouveaux frais forfait Type a la liste et d'afficher la liste */
+
+    public function addFraisForfaitTypeAction(Request $request)
+    {
+        $em = $this -> getDoctrine()->getManager();
+        $fraisType = $em->getRepository("FrontBundle:FraisForfaitType")->findAll();
+
+        $fraisforfaittype = new fraisForfaitType();
+        $formfft = $this->createForm('FrontBundle\Form\FraisForfaitTypeType', $fraisforfaittype);
+        $formfft ->add("Ajouter", SubmitType::class, array(
+            'attr'  => array('class' => 'btn','center-align')));
+        $formfft->handleRequest($request);
+
+        if ($formfft->isSubmitted() && $formfft->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($fraisforfaittype);
+            $em->flush();
+            $this->addFlash('success','Frais ajouté');
+
+            return $this->redirectToRoute('addfraistype');
+
+        }
+        return $this->render('@Front/Admin/addfraistype.html.twig',
+            array('formfft' => $formfft->createView(),
+                "fraisType" => $fraisType
+
+            ));
+
+    }
+
+    /*Action permet a l'admin de supprimer un frais type de la liste */
+
+    public function removeFraisTypeAction($id)
+    {
+        $listeforfaittype = $this->getDoctrine()->getRepository('FrontBundle:FraisForfaitType')->find($id);
+
+        if ($listeforfaittype != null) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($listeforfaittype);
+            $em->flush();
+            $this->addFlash("success", "Frais type supprimer");
+        }
+        return $this->redirectToRoute('addfraistype',array());
+    }
+
 
 
 }

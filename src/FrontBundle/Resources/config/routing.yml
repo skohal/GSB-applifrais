@@ -16,76 +16,77 @@ plandusite:
 # ajoute et suppression de frais niveau utilisateur
 
 addfrais:
-    path:     /addfrais
-    defaults: {_controller: FrontBundle:Frais:addFrais}
+    path:     /utilisateur/addfrais
+    defaults: {_controller: FrontBundle:Utilisateur:addFrais}
 
 removefraisforfait:
-    path:     /frais/{id}/remove
-    defaults: {_controller: FrontBundle:Frais:supprimerfraisforfait}
+    path:     /utilisateur/{id}/remove
+    defaults: {_controller: FrontBundle:Utilisateur:supprimerfraisforfait}
 
 removefraishorsforfait:
-    path:     /frais/{id}/remove2
-    defaults: {_controller: FrontBundle:Frais:suppfraishorsforfait}
+    path:     /utilisateur/{id}/remove2
+    defaults: {_controller: FrontBundle:Utilisateur:suppfraishorsforfait}
 
-voirfichefrais:
-    path:   /fichefrais/{id}/voir
-    defaults: {_controller: FrontBundle:FicheFrais:voirFicheFrais}
+listefrais:
+    path:     /utilisateur/listefrais
+    defaults: {_controller: FrontBundle:Utilisateur:listefiche}
+
 
 afficherfichefrais:
-    path:   /fichefrais/{id}/afficher
-    defaults: {_controller: FrontBundle:FicheFrais:afficherfiche}
+    path:   /utilisateur/{id}/afficher
+    defaults: {_controller: FrontBundle:Utilisateur:afficherfiche}
 
 modifierfraisforfait:
-    path:   /fiche/fichefrais/{id}/modifierfrais
-    defaults: {_controller: FrontBundle:FicheFrais:modifierfraisforfait}
+    path:   /utilisateur/{id}/modifierfrais
+    defaults: {_controller: FrontBundle:Utilisateur:modifierfraisforfait}
 
 modifierfraishorsforfait:
-    path:   /fiche/fichefrais/{id}/modifierfraish
-    defaults: {_controller: FrontBundle:FicheFrais:modifierfraishorsforfait}
+    path:   /utilisateur/{id}/modifierfraish
+    defaults: {_controller: FrontBundle:Utilisateur:modifierfraishorsforfait}
 
 # Gestion  des fiche de frais par l'admin
 
-listefrais:
-    path:     /listefrais
-    defaults: {_controller: FrontBundle:FicheFrais:listefiche}
+voirfichefrais:
+    path:   /comptable/{id}/voir
+    defaults: {_controller: FrontBundle:Comptable:voirFicheFrais}
 
 supprFiche:
-    path:     /admin/{id}/supprfiche
-    defaults: {_controller: FrontBundle:FicheFrais:supprFicheFrais}
+    path:   /comptable/{id}/supprfiche
+    defaults: {_controller: FrontBundle:Comptable:supprFicheFrais}
 
 gererfichesfrais:
-    path:   /admin/gererfichesfrais
-    defaults: {_controller: FrontBundle:FicheFrais:gererFiches}
+    path:   /comptable/gererfichesfrais
+    defaults: {_controller: FrontBundle:Comptable:gererFiches}
 
 
 # Validation et refus des frais de la fiche
 
 validerfraisforfait:
-    path:   /fraisforfait/{id}/valider
-    defaults: {_controller: FrontBundle:Frais:validerfraisforfait}
+    path:   /comptable/{id}/valider
+    defaults: {_controller: FrontBundle:Comptable:validerfraisforfait}
 
 refusfraisforfait:
-    path:   /fraisforfait/{id}/refuser
-    defaults: {_controller: FrontBundle:Frais:refuserfraisforfait}
+    path:   /comptable/{id}/refuser
+    defaults: {_controller: FrontBundle:Comptable:refuserfraisforfait}
 
 validerfraishorsforfait:
-    path:   /fraishorsforfait/{id}/valider
-    defaults: {_controller: FrontBundle:Frais:validerfraishorsforfait}
+    path:   /comptable/{id}/valider
+    defaults: {_controller: FrontBundle:Comptable:validerfraishorsforfait}
 
 refusfraishorsforfait:
-    path:   /fraishorsforfait/{id}/refuser
-    defaults: {_controller: FrontBundle:Frais:refuserfraishorsforfait}
+    path:   /comptable/{id}/refuser
+    defaults: {_controller: FrontBundle:Comptable:refuserfraishorsforfait}
 
 
 # Ajout et gestion de fraistype par l'admin
 
 addfraistype:
     path:   /admin/addfraistype
-    defaults: {_controller: FrontBundle:FraisForfaitType:addFraisForfaitType}
+    defaults: {_controller: FrontBundle:Admin:addFraisForfaitType}
 
 removefraistype:
     path:   /admin/{id}/removeft
-    defaults: {_controller: FrontBundle:FraisForfaitType:removeFraisType}
+    defaults: {_controller: FrontBundle:Admin:removeFraisType}
 
 # Ajoute et gestion des des utilisateur par l'admin
 
@@ -98,9 +99,9 @@ listeutilisateur:
     defaults: {_controller: FrontBundle:Admin:listeuser}
 
 user_edit:
-    path:   /user/{id}/edit
+    path:   /admin/user/{id}/edit
     defaults: {_controller: FrontBundle:Admin:modifieruser }
 
 user_remove:
-    path:   /user/{id}/remove
+    path:   /admin/user/{id}/remove
     defaults: {_controller: FrontBundle:Admin:supprimeruser }

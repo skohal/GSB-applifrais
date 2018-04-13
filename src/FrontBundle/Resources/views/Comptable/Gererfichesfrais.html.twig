@@ -1,0 +1,69 @@
+{% extends '@Front/Default/base.html.twig' %}
+
+{% block body %}
+
+    <div class="row margetop"></div>
+
+    <div class="container">
+        <div class="row manie">
+            <div class="col-lg-12 text-center">
+
+                <h1>Liste Fichefrais</h1>
+
+                <div class="col-lg-12 text-center">
+                    <ul class="gererfichefrais" id="nav-fiches">
+                        <li class="btn-link" id="li-encours">Fiche en Cours</li>
+                        <li class="btn-link" id="li-cloturees">Fiche Cloturées</li>
+                        <li class="btn-link" id="li-validees">Fiche Valitées</li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-12 text-center">
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="userth">Id</th>
+                            <th class="userth">Nom</th>
+                            <th class="userth">Prénom</th>
+                            <th class="userth">Mois</th>
+                            <th class="userth">Annee</th>
+                            <th class="userth">Date creation</th>
+                            <th class="userth">Date modif</th>
+                            <th class="userth">Montant valide</th>
+                            <th class="userth">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for ficheFrais in ficheFrais %}
+                            {% if ficheFrais.Etat.id == '1' %}
+                                {% set class = "div-encours" %}
+                            {% elseif ficheFrais.Etat.id == '3' %}
+                                {% set class = "div-validees" %}
+                            {% elseif ficheFrais.Etat.id == '2' %}
+                                {% set class = "div-cloturees" %}
+                            {% endif %}
+
+                            <tr>
+                                <td class="usertd">{{ficheFrais.id}}</td>
+                                <td class="usertd">{{ ficheFrais.user.nom }}</td>
+                                <td class="usertd">{{ ficheFrais.user.prenom }}</td>
+                                <td class="usertd">{{ ficheFrais.mois | date('F') }}</td>
+                                <td class="usertd">{{ ficheFrais.annee }}</td>
+                                <td class="usertd">{% if ficheFrais.dateCreation %}{{ ficheFrais.dateCreation|date('Y-m-d') }}{% endif %}</td>
+                                <td class="usertd">{% if ficheFrais.dateModif %}{{ ficheFrais.dateModif|date('Y-m-d') }}{% endif %}</td>
+                                <td class="usertd">{{ ficheFrais.montantValide }}</td>
+                                <td class="usertd">
+                                    <a href="{{ path('voirfichefrais', { 'id': ficheFrais.id }) }}"><button type="button" class="btn btn-outline-primary userbt"><i class="fas fa-eye"></i></button></a>
+                                    <a href="{{ path('supprFiche', { 'id': ficheFrais.id }) }}"><button type="button" class="btn btn-outline-danger userbt"><i class="far fa-trash-alt"></i></button></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
