@@ -335,13 +335,16 @@ body * {
 }
 
 .adbox{
-    width: 250px;
+    width: 275px;
     height: 125px;
+    padding-bottom: 25px;
+    margin-top: 20px;
 }
 
 .usbox{
     width: 250px;
     height: 125px;
+    padding-top: 20px;
 }
 
 .table{
