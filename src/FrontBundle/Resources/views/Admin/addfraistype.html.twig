@@ -63,7 +63,8 @@
                         {{ lesfraistypes.montant }}
                     </td>
                     <td>
-                        <a href="{{ path('removefraistype', { id: lesfraistypes.id }) }}"><i class="fas fa-times" style="color: #bd2130"></i></a>
+                        <a href="{{ path('modifierfraistype', { id: lesfraistypes.id }) }}"><button class="btn btn-info userbt"><i class="far fa-edit"></i></button></a>
+                        <a href="{{ path('removefraistype', { id: lesfraistypes.id }) }}"><button class="btn btn-danger userbt"><i class="far fa-trash-alt"></i></button></a>
                     </td>
                 </tr>
                 {% else %}

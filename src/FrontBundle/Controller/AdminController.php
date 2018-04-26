@@ -142,6 +142,29 @@ class AdminController extends Controller
         return $this->redirectToRoute('addfraistype',array());
     }
 
+    public function modifierFraisTypeAction(request $request,$id)
+    {
+        $referer = $request->headers->get('referer');
 
+        $lefraistype = $this->getDoctrine()->getRepository('FrontBundle:FraisForfaitType')->find($id);
+        $formfft = $this->createForm('FrontBundle\Form\FraisForfaitTypeType', $lefraistype);
+        $formfft ->add("Modifier", SubmitType::class, array(
+            'attr'  => array('class' => 'btn','center-align')));
+        $formfft->handleRequest($request);
 
+        $lefraistype->getId();
+
+        if ($formfft->isSubmitted() && $formfft->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            $this->addFlash("success", "Frais Type modifié avec succès");
+
+            return $this->redirectToRoute('addfraistype');
+        }
+        return $this->render('@Front/Admin/Modifierfraisforfaittype.html.twig',
+            array('formfft' => $formfft->createView(),
+                "Fraistype" => $lefraistype,
+                "referer" => $referer,
+            ));
+    }
 }

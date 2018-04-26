@@ -383,28 +383,4 @@ class FicheFrais
     {
         return $this->fraisHorsForfait;
     }
-
-    /**
-     * Set idVisiteur
-     *
-     * @param string $idVisiteur
-     *
-     * @return FicheFrais
-     */
-    public function setIdUser($idUser)
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
-    /**
-     * Get idVisiteur
-     *
-     * @return string
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
 }

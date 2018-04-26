@@ -32,7 +32,7 @@
                     {% for laficheFrais in ficheFrais %}
 
                         <tr>
-                            <td class="usertd">{{ laficheFrais.mois | date('F') }}</td>
+                            <td class="usertd">{{ laficheFrais.dateCreation | date("F")}}</td>
                             <td class="usertd">{{ laficheFrais.annee }}</td>
                             <td>
                                 <ul>

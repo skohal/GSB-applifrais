@@ -37,7 +37,7 @@ class FraisForfait
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FraisForfaitType", inversedBy="fraisForfaits", cascade={"persist", "merge"})
+     * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FraisForfaitType", inversedBy="fraisForfaits", cascade={"persist", "merge", "remove"})
      */
     private $fraisType;
 

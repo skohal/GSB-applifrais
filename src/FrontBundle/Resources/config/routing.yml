@@ -1,3 +1,6 @@
+api_liste_fiches:
+    path:     /api/listefiches/{idUser}
+    defaults: { _controller: FrontBundle:API:listeFichesAPI }
 #Home et login
 homepage:
     path:     /
@@ -87,6 +90,11 @@ addfraistype:
 removefraistype:
     path:   /admin/{id}/removeft
     defaults: {_controller: FrontBundle:Admin:removeFraisType}
+
+
+modifierfraistype:
+    path:   /admin/{id}/modifierft
+    defaults: {_controller: FrontBundle:Admin:modifierFraisType}
 
 # Ajoute et gestion des des utilisateur par l'admin
 

@@ -36,7 +36,7 @@ class FraisForfaitType
     private $montant;
 
     /**
-     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FraisForfait", mappedBy="fraisType", cascade={"persist", "merge"})
+     * @ORM\OneToMany(targetEntity="FrontBundle\Entity\FraisForfait", mappedBy="fraisType", cascade={"persist", "merge", "remove"})
      */
     private $fraisForfaits;
 

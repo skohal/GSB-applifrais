@@ -28,8 +28,6 @@
                         <th class="userth">Code Postal</th>
                         <th class="userth">Ville</th>
                         <th class="userth">Date d'Embauche</th>
-                        <th class="userth">Date de Modification</th>
-                        <th class="userth">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -43,14 +41,7 @@
                                 <td class="usertd">{{ user.cp }}</td>
                                 <td class="usertd">{{ user.ville }}</td>
                                 <td class="usertd">{% if user.dateEmbauche %}{{ user.dateEmbauche|date('Y-m-d') }}{% endif %}</td>
-                                <td class="usertd">{% if user.dateModif %}{{ user.dateModif|date('Y-m-d') }}{% endif %}</td>
-                                <td>
-                                    <ul>
-                                        <a href="{{ path('user_edit', { id: user.id }) }}"><button type="button" class="btn btn-outline-primary userbt"><i class="fas fa-edit"></i></button></a>
-                                        <br/>
-                                        <a href="{{ path('user_remove', { id: user.id }) }}"><button type="button" class="btn btn-outline-danger userbt"><i class="far fa-trash-alt"></i></button></a>
-                                    </ul>
-                                </td>
+
                             </tr>
                         {% endfor %}
                         </tbody>
