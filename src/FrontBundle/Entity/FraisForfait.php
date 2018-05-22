@@ -184,5 +184,9 @@ class FraisForfait
         return $this->etat;
     }
 
+    public function getMontant()
+    {
+        return ($this->quantite * $this->getFraisType()->getMontant());
+    }
 
 }

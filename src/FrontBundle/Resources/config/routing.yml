@@ -1,6 +1,15 @@
+api_connextion:
+    path:     /api/connect
+    defaults: { _controller: FrontBundle:API:connexionAPI}
+
 api_liste_fiches:
     path:     /api/listefiches/{idUser}
     defaults: { _controller: FrontBundle:API:listeFichesAPI }
+
+api_fiche:
+    path:     /api/fiche/{id}
+    defaults: { _controller : FrontBundle:API:FicheAPI}
+
 #Home et login
 homepage:
     path:     /

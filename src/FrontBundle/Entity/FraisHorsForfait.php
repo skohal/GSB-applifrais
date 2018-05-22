@@ -217,4 +217,9 @@ class FraisHorsForfait
         return $this->etat;
     }
 
+    public function getMontantTotal()
+    {
+        return ($this->quantite * $this->getMontant());
+    }
+
 }

@@ -383,4 +383,19 @@ class FicheFrais
     {
         return $this->fraisHorsForfait;
     }
+
+    public function getMontantTotal()
+    {
+        $montant = 0;
+
+        foreach ($this->fraisForfaits as $unFrais){
+            $montant+= $unFrais->getMontant();
+        }
+        foreach ($this->fraisHorsForfait as $unFrais){
+            $montant+= $unFrais->getMontantTotal();
+        }
+
+        return $montant;
+
+    }
 }
