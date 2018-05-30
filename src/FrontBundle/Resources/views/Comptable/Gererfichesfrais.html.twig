@@ -12,18 +12,19 @@
 
                 <div class="col-lg-12 text-center">
                     <ul class="gererfichefrais" id="nav-fiches">
+                        <li class="btn-link" id="li-tous">Toutes les fiches</li>
                         <li class="btn-link" id="li-encours">Fiche en Cours</li>
                         <li class="btn-link" id="li-cloturees">Fiche Cloturées</li>
-                        <li class="btn-link" id="li-validees">Fiche Valitées</li>
+                        <li class="btn-link" id="li-validees">Fiche Validées</li>
                     </ul>
                 </div>
 
                 <div class="col-lg-12 text-center">
 
-                    <table class="table">
+                    <table id="usertable" class="display" cellspacing="0" width="100%">
                         <thead>
                         <tr>
-                            <th class="userth">Id</th>
+                            <th class="userth">Etat</th>
                             <th class="userth">Nom</th>
                             <th class="userth">Prénom</th>
                             <th class="userth">Mois</th>
@@ -42,10 +43,12 @@
                                 {% set class = "div-validees" %}
                             {% elseif ficheFrais.Etat.id == '2' %}
                                 {% set class = "div-cloturees" %}
+                            {% elseif ficheFrais.Etat.id == '' %}
+                                {% set class = "div-tous" %}
                             {% endif %}
 
                             <tr>
-                                <td class="usertd">{{ficheFrais.id}}</td>
+                                <td class="usertd">{{ficheFrais.etat.libelle}}</td>
                                 <td class="usertd">{{ ficheFrais.user.nom }}</td>
                                 <td class="usertd">{{ ficheFrais.user.prenom }}</td>
                                 <td class="usertd">{{ ficheFrais.mois | date('F') }}</td>
@@ -65,5 +68,25 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script language="JavaScript">
+        $(document).ready(function() {
+            var table = $('#usertable').DataTable();
+
+            $('#li-encours').on( 'click', function () {
+                table.search( "cours" ).draw();
+            } );
+            $('#li-cloturees').on( 'click', function () {
+                table.search( "cloturé" ).draw();
+            } );
+            $('#li-validees').on( 'click', function () {
+                table.search( "validé" ).draw();
+            } );
+            $('#li-tous').on( 'click', function () {
+                table.search( "" ).draw();
+            } );
+        });
+    </script>
 
 {% endblock %}
