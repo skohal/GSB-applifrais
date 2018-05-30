@@ -433,3 +433,18 @@ a:-webkit-any-link {
     width: 80%;
     height: 120%;
 }
+
+
+#nav-fiches {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-link {
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 10px;
+    border: solid #555 1px;
+    background-color: rgba(255,255,255,0);
+}
