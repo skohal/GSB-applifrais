@@ -1,6 +1,6 @@
-.h1-index { 
-    color: #153F69; 
-    font-size: 60px; 
+.h1-index {
+    color: #153F69;
+    font-size: 60px;
     padding-top: 50px;
 }
 
@@ -44,8 +44,8 @@
 }
 
 .account {
-    text-align: center; 
-    width: 40%; 
+    text-align: center;
+    width: 40%;
     opacity: 0.8;
 }
 
@@ -447,4 +447,32 @@ a:-webkit-any-link {
     padding: 10px;
     border: solid #555 1px;
     background-color: rgba(255,255,255,0);
+}
+
+.paginate_button {
+    color: #fff !important;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    display: inline-block;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid #0000;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    border-radius: 0.25rem;
+    transition: all 0.15s ease-in-out;
+}
+
+.dataTables_wrapper .dataTables_filter output{
+    margin-left: 0.5em;
+    border: 2px solid #ccc;
+    padding: 5px 5px 5px 5px;
+    border-radius: 4px;
 }
