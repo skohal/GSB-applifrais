@@ -2,17 +2,11 @@
 
 namespace FrontBundle\Controller;
 
-use FrontBundle\Entity\FraisForfait;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use FrontBundle\Entity\user;
-use FrontBundle\Entity\FraisForfaitType;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+
 
 class APIController extends Controller
 {
@@ -22,13 +16,81 @@ class APIController extends Controller
 
     /*Action de connection utilisateur*/
 
-    public function connexionAPIaction($id)
+    public function connexionAPIaction(request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $users =$em->getRepository('user')->find($id);
 
 
+        $username= $request->get("username");
+        $password= $request->get("password");
+        $status = false;
+        $data = "";
+
+
+        $user = $this->getDoctrine()->getRepository('FrontBundle:user')->findOneBy($username);
+
+
+        if ($user) {
+            $encoder_service = $this->get('security.encoder_factory');
+            $encoder = $encoder_service->getEncoder($user);
+            $status = $encoder->isPasswordValid(
+                $user->getPassword(),
+                $password,
+                $user->getSalt()
+            );
+
+            if ($status) {
+                $token = new UsernamePasswordToken($user, $user->getPassword(), 'main', $user->getRoles());
+
+                $context = $this->get('security.token_storage');
+                $context->setToken($token);
+
+                $data = $user->getId();
+            } else {
+                $data = "Refusé";
+            }
+        }else {
+            $data = "Utilisateur inconnu";
+        }
+
+        $response = new JsonResponse();
+        $response->setData(array(
+            'status' => $status,
+            'data' => $data
+        ));
+
+        return $response;
+
+
+      /*  $em = $this->getDoctrine()->getManager();
+
+        $users =$em->getRepository('FrontBundle:user')->findAll();
+
+
+        $jsonContent = array();
+        $lesusers = array();
+
+
+        foreach ($users as $unuser){
+            $leuser = array();
+            $leuser["prenom"] = $unuser->getPrenom();
+            $leuser["nom"] = $unuser->getNom();
+            $leuser["username"] = $unuser->getUsername();
+            $leuser["id"] = $unuser->getId();
+            $leuser["password"] = $unuser->getPassword();
+            $leuser["role"] = $unuser->getRoles();
+
+
+
+            array_push($lesusers, $leuser);
+        }
+
+        $jsonContent["lesutilisateur"] = $lesusers;
+        return new JsonResponse(
+            array("status" => "ok",
+                "data" => $jsonContent)
+        );
+
+      */
     }
 
     /*Action d'affichage de la liste des utilisateur */

@@ -109,6 +109,22 @@ class ComptableController extends Controller
         return $this->redirectToRoute('voirfichefrais', array('id' => $ficheId));
     }
 
+    public function resetfraisforfaitAction($id)
+    {
+
+
+        $em = $this->getDoctrine()->getManager();
+        $fraisforfait = $this->getDoctrine()->getRepository('FrontBundle:FraisForfait')->find($id);
+        $etatInitial = $em->getRepository("FrontBundle:Etat")->find(1);
+        $fraisforfait->setEtat($etatInitial);
+        $em->persist($fraisforfait);
+        $em->flush();
+        $ficheId = $fraisforfait->getFiche()->getId();
+
+        $this->addFlash("success", "Frais hors forfait rétabli");
+        return $this->redirectToRoute('voirfichefrais', array('id' => $ficheId));
+    }
+
     public function validerfraishorsforfaitAction($id)
     {
 
@@ -144,4 +160,21 @@ class ComptableController extends Controller
         $this->addFlash("success", "Frais hors forfait rétabli");
         return $this->redirectToRoute('voirfichefrais', array('id' => $ficheId));
     }
+
+    public function resetfraishorsforfaitAction($id)
+    {
+
+
+        $em = $this->getDoctrine()->getManager();
+        $fraishorsforfait = $this->getDoctrine()->getRepository('FrontBundle:FraisHorsForfait')->find($id);
+        $etatInitial = $em->getRepository("FrontBundle:Etat")->find(1);
+        $fraishorsforfait->setEtat($etatInitial);
+        $em->persist($fraishorsforfait);
+        $em->flush();
+        $ficheId = $fraishorsforfait->getFiche()->getId();
+
+        $this->addFlash("success", "Frais hors forfait rétabli");
+        return $this->redirectToRoute('voirfichefrais', array('id' => $ficheId));
+    }
+
 }

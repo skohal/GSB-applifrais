@@ -1,5 +1,5 @@
 api_connextion:
-    path:     /api/connect
+    path:     /api/connect/
     defaults: { _controller: FrontBundle:API:connexionAPI}
 
 api_liste_fiches:
@@ -81,14 +81,22 @@ refusfraisforfait:
     path:   /comptable/{id}/refuser
     defaults: {_controller: FrontBundle:Comptable:refuserfraisforfait}
 
+resetfraisforfait:
+    path:   /comptable/{id}/reset
+    defaults: {_controller: FrontBundle:Comptable:resetfraisforfait}
+
+
 validerfraishorsforfait:
-    path:   /comptable/{id}/valider
+    path:   /comptable/{id}/valider2
     defaults: {_controller: FrontBundle:Comptable:validerfraishorsforfait}
 
 refusfraishorsforfait:
-    path:   /comptable/{id}/refuser
+    path:   /comptable/{id}/refuser2
     defaults: {_controller: FrontBundle:Comptable:refuserfraishorsforfait}
 
+resetfraishorsforfait:
+    path:   /comptable/{id}/reset2
+    defaults: {_controller: FrontBundle:Comptable:resetfraishorsforfait}
 
 # Ajout et gestion de fraistype par l'admin
 
