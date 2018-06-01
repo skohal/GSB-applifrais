@@ -16,17 +16,14 @@ class APIController extends Controller
 
     /*Action de connection utilisateur*/
 
-    public function connexionAPIaction(request $request)
+    public function connexionAPIaction(request $request, $username, $password)
     {
 
-
-        $username= $request->get("username");
-        $password= $request->get("password");
         $status = false;
         $data = "";
 
 
-        $user = $this->getDoctrine()->getRepository('FrontBundle:user')->findOneBy($username);
+        $user = $this->getDoctrine()->getRepository('FrontBundle:user')->findOneByUsername($username);
 
 
         if ($user) {

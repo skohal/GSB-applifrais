@@ -1,5 +1,5 @@
 api_connextion:
-    path:     /api/connect/
+    path:     /api/connect/{username}/{password}
     defaults: { _controller: FrontBundle:API:connexionAPI}
 
 api_liste_fiches:
