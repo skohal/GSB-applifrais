@@ -26,6 +26,10 @@ security:
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/, role: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/comptable/, role: ROLE_COMPTABLE }
         - { path: ^/utilisateur/, role: ROLE_USER}
+        - { path: ^/api/listefiches, role: ROLE_USER}
+        - { path: ^/api/fiche, role: ROLE_USER}
+
