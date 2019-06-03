@@ -36,12 +36,12 @@
                                 <td class="usertd">{{ user.ville }}</td>
                                 <td class="usertd">{% if user.dateEmbauche %}{{ user.dateEmbauche|date('Y-m-d') }}{% endif %}</td>
                                 <td class="usertd">{% if user.dateModif %}{{ user.dateModif|date('Y-m-d') }}{% endif %}</td>
-                                <td>
+                               <!-- <td>
                                     <ul>
                                         <a href="{{ path('user_edit', { id: user.id }) }}"><button type="button" class="btn btn-outline-primary userbt"><i class="fas fa-eye"></i></button></a>
                                         <a href="{{ path('user_remove', { id: user.id }) }}"><button type="button" class="btn btn-outline-danger userbt"><i class="far fa-trash-alt"></i></button></a>
                                     </ul>
-                                </td>
+                                </td>  -->
                             </tr>
                         {% endfor %}
                         </tbody>
