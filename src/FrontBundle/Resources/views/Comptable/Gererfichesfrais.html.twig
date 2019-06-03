@@ -58,7 +58,6 @@
                                 <td class="usertd">{{ ficheFrais.montantValide }}</td>
                                 <td class="usertd">
                                     <a href="{{ path('voirfichefrais', { 'id': ficheFrais.id }) }}"><button type="button" class="btn btn-outline-primary userbt"><i class="fas fa-eye"></i></button></a>
-                                    <a href="{{ path('supprFiche', { 'id': ficheFrais.id }) }}"><button type="button" class="btn btn-outline-danger userbt"><i class="far fa-trash-alt"></i></button></a>
                                 </td>
                             </tr>
                         {% endfor %}
